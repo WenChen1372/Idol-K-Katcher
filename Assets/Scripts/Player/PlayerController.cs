@@ -21,7 +21,7 @@ public class PlayerController : MonoBehaviour
                     RaycastHit hit;
                     if (other.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, Mathf.Infinity))
                     {
-                        SceneManager.LoadScene("SampleScene");
+                        SceneManager.LoadScene("Cham");
                     }
                 }
             }

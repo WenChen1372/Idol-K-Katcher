@@ -368,7 +368,7 @@ MonoBehaviour:
   m_ProbabilityTourStop: 0.3
   m_MinRange: 5
   m_MaxRange: 15
-  m_WaitTime: 30
+  m_WaitTime: 1
   m_YPos: 1
 --- !u!4 &171452842
 Transform:
