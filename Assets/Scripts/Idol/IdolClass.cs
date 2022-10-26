@@ -2,17 +2,36 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class IdolClass : MonoBehaviour
+public class IdolClass : MonoBehaviour
 {
-   
-    #region Protected Variables
-    //The 2D sprite of the idol
-    protected Sprite idolSprite;
-    //The tier of the idol (S, A, B, C) 
-    protected char idolTier;
-    //The health stat of the idol 
-    protected float idolHealth;
-    //The stamina stat of the idol
-    protected float idolStamina; 
+    #region Inspector Variables
+    [SerializeField]
+    [Tooltip("The health of the idol")]
+    private float health; 
+    public float Health
+    {
+        get;
+    }
+
+    [SerializeField]
+    [Tooltip("The stamina of the idol")]
+    private float stamina;
+    public float Stamina
+    {
+        get; 
+    }
+
+    [SerializeField]
+    [Tooltip("The 2D sprite model of the idol photocard")]
+    private GameObject idolPhotoCard; 
+    public GameObject IdolPhotoCard
+    {
+        get; 
+    }
+
+    [SerializeField]
+    [Tooltip("A list of abilities of the idol.")]
+    private IdolAbility[] idolAttacks;
+    public IdolAbility[] IdolAttacks; 
     #endregion 
 }
