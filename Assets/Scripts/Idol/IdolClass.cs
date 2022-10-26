@@ -2,12 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class IdolClass : MonoBehaviour
+public abstract class IdolClass : MonoBehaviour
 {
     #region Inspector Variables
+
+    #endregion
+
     [SerializeField]
     [Tooltip("The health of the idol")]
-    private float health; 
+    private float health;
     public float Health
     {
         get;
@@ -18,20 +21,19 @@ public class IdolClass : MonoBehaviour
     private float stamina;
     public float Stamina
     {
-        get; 
+        get;
     }
 
     [SerializeField]
     [Tooltip("The 2D sprite model of the idol photocard")]
-    private GameObject idolPhotoCard; 
+    private GameObject idolPhotoCard;
     public GameObject IdolPhotoCard
     {
-        get; 
+        get;
     }
 
     [SerializeField]
     [Tooltip("A list of abilities of the idol.")]
     private IdolAbility[] idolAttacks;
-    public IdolAbility[] IdolAttacks; 
-    #endregion 
+    public IdolAbility[] IdolAttacks;
 }
