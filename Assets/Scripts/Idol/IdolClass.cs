@@ -4,36 +4,94 @@ using UnityEngine;
 
 public abstract class IdolClass : MonoBehaviour
 {
-    #region Inspector Variables
-
-    #endregion
-
-    [SerializeField]
-    [Tooltip("The health of the idol")]
+    #region Private Variables
+    //The health stat of the idol
     private float health;
     public float Health
     {
         get;
+        set;
     }
 
-    [SerializeField]
-    [Tooltip("The stamina of the idol")]
+    //The stamina stat of the idol 
     private float stamina;
     public float Stamina
     {
         get;
+        set;
     }
 
+    //The tier of the idol (S, A, B, C) 
+    private char idolTier; 
+    public char IdolTier
+    {
+        get;
+        set;
+    }
+
+    //List of Abilites of the Idol 
+    private IdolAbility[] idolAbilities;
+    public IdolAbility[] IdolAbilities
+    {
+        get;
+        set; 
+    }
+
+    //The current health of the idol
+    //Set through other methods
+    private float curHealth;
+    public float CurHealth
+    {
+        get; 
+    }
+
+    //The current stamina of the idol
+    //Set through other methods
+    private float curStamina; 
+    public float CurStamina
+    {
+        get; 
+    }
+    #endregion
+
+    #region Inspector Variables
+    //The 2D sprite of the associated photocard with the idol
+    //This is an inspector variable so it is easier to just drag and drop...
+    //The photocard for the idol in the editor
+    //Doesn't need setter, since will be handled in inspector
     [SerializeField]
-    [Tooltip("The 2D sprite model of the idol photocard")]
-    private GameObject idolPhotoCard;
-    public GameObject IdolPhotoCard
+    [Tooltip("The 2D sprite of the associated photocard with the idol")]
+    private Sprite idolPhotoCard;
+    public Sprite IdolPhotoCard
     {
         get;
     }
+    #endregion
 
-    [SerializeField]
-    [Tooltip("A list of abilities of the idol.")]
-    private IdolAbility[] idolAttacks;
-    public IdolAbility[] IdolAttacks;
+    #region Health/Stamina Methods
+    //These two methods reset the current health/stamina to the original health and stamina stat of the idol
+    //This is good to be used before a battle scene to make sure idol is full health and stamina
+    public void ResetHealth()
+    {
+        curHealth = health;
+    }
+
+    public void ResetStamina()
+    {
+        curStamina = stamina; 
+    }
+
+    //These two methods change the current health/stamina by a certain amount
+    //This is good to be used when getting attacked/using attacks in battle 
+    //Can be positive or negative
+    public void ChangeHealth(float amount)
+    {
+        curHealth += amount; 
+    }
+
+    public void ChangeStamina(float amount)
+    {
+        curStamina += amount; 
+    }
+    #endregion 
 }
