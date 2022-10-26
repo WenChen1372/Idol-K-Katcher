@@ -24,16 +24,37 @@ public class GameplayController : MonoBehaviour
     private Image playerChoice_Img, oponnentChoice_Img;
 
     [SerializeField]
-    private TextMeshPro infoText;
+    private TMP_Text infoText;
+
+    [SerializeField]
+    private int countdownTime;
+
+    private TMP_Text countdownDisplay;
 
     private GameChoices player_Choice = GameChoices.NONE, Opponent_Choice = GameChoices.NONE;
 
     private AnimationController animationController;
 
+    IEnumerator CountdownToStart()
+    {
+        while (countdownTime > 0)
+
+        {
+            print("hi");
+            countdownDisplay.text = countdownTime.ToString();
+            print(countdownTime);
+
+            yield return new WaitForSeconds(1f);
+
+            countdownTime--;
+        }
+        countdownDisplay.text = "GO!";
+    }
     void Awake()
     {
         animationController = GetComponent<AnimationController>();
-
+        StartCoroutine(CountdownToStart());
+        print("hi!");
     }
 
     public void SetChoices(GameChoices gameChoices)
