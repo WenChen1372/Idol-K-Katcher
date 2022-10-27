@@ -21,40 +21,24 @@ public class GameplayController : MonoBehaviour
     private Sprite up_Sprite, down_Sprite, right_Sprite, left_Sprite;
 
     [SerializeField]
-    private Image playerChoice_Img, oponnentChoice_Img;
+    public Image playerChoice_Img, oponnentChoice_Img;
 
     [SerializeField]
     private TMP_Text infoText;
 
-    [SerializeField]
-    private int countdownTime;
+    
 
-    private TMP_Text countdownDisplay;
+    private bool clockisTicking;
 
-    private GameChoices player_Choice = GameChoices.NONE, Opponent_Choice = GameChoices.NONE;
+    public GameChoices player_Choice = GameChoices.NONE, Opponent_Choice = GameChoices.NONE;
 
     private AnimationController animationController;
 
-    IEnumerator CountdownToStart()
-    {
-        while (countdownTime > 0)
-
-        {
-            print("hi");
-            countdownDisplay.text = countdownTime.ToString();
-            print(countdownTime);
-
-            yield return new WaitForSeconds(1f);
-
-            countdownTime--;
-        }
-        countdownDisplay.text = "GO!";
-    }
+    
     void Awake()
     {
         animationController = GetComponent<AnimationController>();
-        StartCoroutine(CountdownToStart());
-        print("hi!");
+        
     }
 
     public void SetChoices(GameChoices gameChoices)
@@ -93,11 +77,11 @@ public class GameplayController : MonoBehaviour
 
                 break;
         }
-        SetOpponentChoice();
+        //SetOpponentChoice();
 
         DetermineWinner();
     }
-    void SetOpponentChoice()
+    public void SetOpponentChoice()
     {
         int rnd = Random.Range(0, 3);
 
@@ -135,13 +119,14 @@ public class GameplayController : MonoBehaviour
                 break;
         }
     }
-    void DetermineWinner()
+    public void DetermineWinner()
     {
-        if (player_Choice == Opponent_Choice)
+        print("Testing");
+        if (player_Choice == Opponent_Choice || animationController.reactionTime > 5.0)
         {
             //infoText.text = "LOSER ";
-            StartCoroutine(DisplayWinnerAndRestart());
-
+            //StartCoroutine(animationController.DisplayWinner());
+            //animationController.playerChoiceHandlerAnimation.Play("win");
             return;
         }
 

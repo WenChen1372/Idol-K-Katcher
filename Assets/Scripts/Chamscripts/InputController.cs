@@ -14,11 +14,12 @@ public class InputController : MonoBehaviour
         animationController = GetComponent<AnimationController>();
         gameplayController = GetComponent<GameplayController>();
         gameplayController.SetOpponentChoice();
-        animationController.ShowOpponent();
+        
     }
 
     public void GetChoice()
     {
+   
         string choiceName = UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject.name;
 
         GameChoices selectedChoice = GameChoices.NONE;
@@ -43,6 +44,7 @@ public class InputController : MonoBehaviour
         }
 
         gameplayController.SetChoices(selectedChoice);
+
         animationController.PlayerMadeChoice();
     }
 

@@ -4,23 +4,31 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-
-public class Countdown : MonoBehaviour
+public class countdown : MonoBehaviour
 {
+    [SerializeField]
     public int countdownTime;
-    public TMP_Text countdownDisplay;
 
-    IEnumerator CountdownToStart()
+    [SerializeField]
+    public TextMeshPro display;
+
+    private void Start()
     {
-        while(countdownTime > 0)
+        StartCoroutine(CountdownToStart());
+    }
+
+    public IEnumerator CountdownToStart()
+    {
+        
+        while (countdownTime > 0)
         {
-            countdownDisplay.text = countdownTime.ToString();
+            display.text = countdownTime.ToString();
 
             yield return new WaitForSeconds(1f);
 
             countdownTime--;
         }
-        countdownDisplay.text = "GO!";
-
+        display.text = "GO";
     }
+   
 }
