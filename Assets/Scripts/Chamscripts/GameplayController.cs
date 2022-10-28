@@ -38,7 +38,6 @@ public class GameplayController : MonoBehaviour
     void Awake()
     {
         animationController = GetComponent<AnimationController>();
-        
     }
 
     public void SetChoices(GameChoices gameChoices)
