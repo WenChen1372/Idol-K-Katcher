@@ -13,6 +13,7 @@ public class InputController : MonoBehaviour
     {
         animationController = GetComponent<AnimationController>();
         gameplayController = GetComponent<GameplayController>();
+        gameplayController.SetOpponentChoice();
     }
 
     public void GetChoice()
