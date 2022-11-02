@@ -8,21 +8,37 @@ public class GameManager : MonoBehaviour
 
  public static GameManager Instance = null;
  
- private void Awake()
-    {
-        if (Instance == null)
+    private void Awake()
         {
-            Instance = this;
-        } else if (Instance != this)
-        {
-            Destroy(this.gameObject);
-        }
+            if (Instance == null)
+            {
+                Instance = this;
+            } else if (Instance != this)
+            {
+                Destroy(this.gameObject);
+            }
 
-        DontDestroyOnLoad(gameObject);
-    }
+            DontDestroyOnLoad(gameObject);
+        }   
 
     public void MainMenu()
     {
-        SceneManager.LoadScene("Location-based Game");
-    }   
+        SceneManager.LoadScene("Location-basedGame");
+    } 
+
+    public void ExchangeScene()
+    {
+        SceneManager.LoadScene("Exchange");
+    }  
+
+    public void CollectionScene()
+    {
+        SceneManager.LoadScene("Collection");
+    }
+
+    public void ChamScene()
+    {
+        SceneManager.LoadScene("Cham"); 
+    }
+
 }
