@@ -23,7 +23,7 @@ public class AIdolClass : IdolClass
 
         Health = 200;
         CurHealth = 200;
-        Stamina = 200;
+        Stamina = 9999;
         CurStamina = 9999;
         IdolTier = 'A';
         IdolAbilities = new IdolAbility[] { new IdolAbility("Aegyo", 0.7f, 30), new IdolAbility("Dance", 35, 30), new IdolAbility("Sing", 80, 70) };
