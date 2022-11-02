@@ -10,7 +10,7 @@ public class IdolAbility
     private string abilityName;
     public string AbilityName
     {
-        get; 
+        get;
     }
 
     //The power (magnitude) of the ability (damage, stun duration, etc.) 
@@ -18,14 +18,14 @@ public class IdolAbility
     private float abilityPower;
     public float AbilityPower
     {
-        get; 
+        get;
     }
 
     //The stamina cost of the ability
     private float abilityCost;
     public float AbilityCost
     {
-        get; 
+        get;
     }
     #endregion
 
@@ -33,9 +33,9 @@ public class IdolAbility
     //constructor
     public IdolAbility(string name, float power, float cost)
     {
-        abilityName = name;
-        abilityPower = power;
-        abilityCost = cost; 
+        AbilityName = name;
+        AbilityPower = power;
+        AbilityCost = cost; 
     }
     #endregion 
 }
