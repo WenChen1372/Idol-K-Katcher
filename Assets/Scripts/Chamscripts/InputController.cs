@@ -43,6 +43,9 @@ public class InputController : MonoBehaviour
 
         gameplayController.SetChoices(selectedChoice);
         animationController.PlayerMadeChoice();
+
+        animationController.ShowWinner();
+
     }
 
 
