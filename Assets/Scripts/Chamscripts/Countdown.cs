@@ -7,28 +7,14 @@ using TMPro;
 public class countdown : MonoBehaviour
 {
     [SerializeField]
-    public int countdownTime;
+    public float reactionTime;
 
-    [SerializeField]
-    public TextMeshPro display;
+    private bool clockisTicking;
 
     private void Start()
     {
-        StartCoroutine(CountdownToStart());
+        reactionTime = 0f;
+
     }
 
-    public IEnumerator CountdownToStart()
-    {
-        
-        while (countdownTime > 0)
-        {
-            display.text = countdownTime.ToString();
-
-            yield return new WaitForSeconds(1f);
-
-            countdownTime--;
-        }
-        display.text = "GO";
-    }
-   
 }
