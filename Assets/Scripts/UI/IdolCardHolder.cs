@@ -9,7 +9,8 @@ public class IdolCardHolder : MonoBehaviour
 
 
     //public int itemID;
-    //public Image cardImage;
+	public GameObject idolCount;
+	public Image idolImage;
 
 
 

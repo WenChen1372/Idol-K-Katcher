@@ -3,19 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class BattleHUD : MonoBehaviour
+public class EnemyBattleHUD : MonoBehaviour
 {
-
     public Text idolNameText;
     public Text idolTierText;
     public Slider hpSlider;
     public Slider staminaSlider;
-    public Text aegyoDmg;
-    public Text aegyoCost;
-    public Text singDmg;
-    public Text singCost;
-    public Text danceDmg;
-    public Text danceCost;
     
 
     //set the HUD
@@ -27,12 +20,7 @@ public class BattleHUD : MonoBehaviour
         hpSlider.value = idol.CurHealth;
         staminaSlider.maxValue = idol.Stamina;
         staminaSlider.value = idol.CurStamina;
-        aegyoDmg.text = "DMG: " + idol.IdolAbilities[0].AbilityPower.ToString();
-        aegyoCost.text = "Mana: " + idol.IdolAbilities[0].AbilityCost.ToString();
-        singDmg.text = "DMG: " + idol.IdolAbilities[1].AbilityPower.ToString();
-        singCost.text = "Mana: " + idol.IdolAbilities[1].AbilityCost.ToString();
-        danceDmg.text = "DMG: " + idol.IdolAbilities[2].AbilityPower.ToString();
-        danceCost.text = "Mana: " + idol.IdolAbilities[2].AbilityCost.ToString();
+
     }
 
 
@@ -45,6 +33,4 @@ public class BattleHUD : MonoBehaviour
     {
         staminaSlider.value = stamina;
     }
-
-
 }

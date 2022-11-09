@@ -87,7 +87,7 @@ public class PlayerInventory : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        DontDestroyOnLoad(transform.gameObject);
+        DontDestroyOnLoad(this);
     }
 
     // Update is called once per frame

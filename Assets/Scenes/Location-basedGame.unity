@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44402242, g: 0.49316543, b: 0.5722324, a: 1}
+  m_IndirectSpecularColor: {r: 0.44402185, g: 0.49316472, b: 0.57223153, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -232,6 +232,7 @@ MonoBehaviour:
   m_PlayerTransform: {fileID: 1090378090}
   m_Offset: {x: 0, y: 80, z: 0}
   m_SmoothTime: 0.25
+  p_FirstTouch: {x: 0, y: 0, z: 0}
 --- !u!1 &137357532
 GameObject:
   m_ObjectHideFlags: 0
@@ -740,6 +741,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1090378100
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 446915756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a06d81b99a4f374ea0b669d5c32576d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1188978833
 GameObject:
   m_ObjectHideFlags: 0
