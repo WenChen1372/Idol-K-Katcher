@@ -4,6 +4,8 @@ using UnityEngine;
 
 public abstract class IdolClass : MonoBehaviour
 {
+    //These private variables are things that go for ALL IDOLS IN ONE CLASS (S, A, B, C) 
+    //EASIER to change in each class script
     #region Private Variables
     //The health stat of the idol
     private float health;
@@ -29,14 +31,6 @@ public abstract class IdolClass : MonoBehaviour
         set;
     }
 
-    //List of Abilites of the Idol 
-    private IdolAbility[] idolAbilities;
-    public IdolAbility[] IdolAbilities
-    {
-        get;
-        set; 
-    }
-
     //The current health of the idol
     //Set through other methods
     private float curHealth;
@@ -54,15 +48,33 @@ public abstract class IdolClass : MonoBehaviour
     }
     #endregion
 
+    //These inspector variables are things that may change between EACH INDIVIDUAL IDOL 
+    //EASIER to change in inspector
     #region Inspector Variables
     //The 2D sprite of the associated photocard with the idol
     //This is an inspector variable so it is easier to just drag and drop...
     //The photocard for the idol in the editor
     //Doesn't need setter, since will be handled in inspector
     [SerializeField]
-    [Tooltip("The 2D sprite of the associated photocard with the idol")]
+    [Tooltip("The 2D SPRITE of the associated photocard with the idol")]
     private Sprite idolPhotoCard;
     public Sprite IdolPhotoCard
+    {
+        get;
+    }
+
+    [SerializeField]
+    [Tooltip("The name of the idol (string) (should be same as prefab name)")]
+    private string idolName; 
+    public string IdolName
+    {
+        get; 
+    }
+
+    [SerializeField]
+    [Tooltip("The list of abilities of the idol")]
+    private IdolAbility[] idolAbilities;
+    public IdolAbility[] IdolAbilities
     {
         get;
     }

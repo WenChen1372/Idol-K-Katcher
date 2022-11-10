@@ -30,5 +30,12 @@ public class GameController : MonoBehaviour
     {
         //SceneManager.LoadSceneAsync(""); 
     }
+    #endregion
+
+    #region Quit Methods
+    private void QuitGame()
+    {
+        Application.Quit(); 
+    }
     #endregion 
 }

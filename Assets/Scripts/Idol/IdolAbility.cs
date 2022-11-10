@@ -5,23 +5,25 @@ using UnityEngine;
 [System.Serializable]
 public class IdolAbility
 {
-    #region Private Variables
-    //The name of the ability
+    #region Inspector Variables
+    [SerializeField]
+    [Tooltip("Ability name as string")]
     private string abilityName;
     public string AbilityName
     {
         get; 
     }
 
-    //The power (magnitude) of the ability (damage, stun duration, etc.) 
-    //float can represent damage, seconds of stun, or percentage (percentage should be 0.0 - 1.0) 
+    [SerializeField]
+    [Tooltip("Power (magnitude) of ability as float")]
     private float abilityPower;
     public float AbilityPower
     {
         get; 
     }
 
-    //The stamina cost of the ability
+    [SerializeField]
+    [Tooltip("Stamina cost of ability as float")]
     private float abilityCost;
     public float AbilityCost
     {
