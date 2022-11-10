@@ -18,32 +18,6 @@ public class TestIdolClass : IdolClass
     [SerializeField]
     [Tooltip("Tier of idol (S, A, B, C) (char)")]
     private char m_Tier;
-
-    [SerializeField]
-    [Tooltip("Power of Aeygo Ability (if percentage, make 0.0 - 1.0)")]
-    private float m_AeygoPower;
-
-    [SerializeField]
-    [Tooltip("Cost of Aeygo Ability")]
-    private float m_AeygoCost;
-
-    [SerializeField]
-    [Tooltip("Power of Dance Ability")]
-    private float m_DancePower;
-
-    [SerializeField]
-    [Tooltip("Cost of Dance Ability")]
-    private float m_DanceCost;
-
-    [SerializeField]
-    [Tooltip("Power of Sing Ability")]
-    private float m_SingPower;
-
-    [SerializeField]
-    [Tooltip("Cost of Sing Ability")]
-    private float m_SingCost; 
-
-
     #endregion
 
     #region Initilization 
@@ -55,7 +29,6 @@ public class TestIdolClass : IdolClass
         Health = m_Health;
         Stamina = m_Stamina;
         IdolTier = m_Tier;
-        IdolAbilities = new IdolAbility[] { new IdolAbility("Aegyo", m_AeygoPower, m_AeygoCost), new IdolAbility("Dance", m_DancePower, m_DanceCost), new IdolAbility("Sing", m_SingPower, m_SingCost) };
         ResetHealth();
         ResetStamina();
     }

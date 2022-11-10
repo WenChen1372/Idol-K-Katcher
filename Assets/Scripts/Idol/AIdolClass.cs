@@ -26,7 +26,6 @@ public class AIdolClass : IdolClass
         Stamina = 9999;
         CurStamina = 9999;
         IdolTier = 'A';
-        IdolAbilities = new IdolAbility[] { new IdolAbility("Aegyo", 0.7f, 30), new IdolAbility("Dance", 35, 30), new IdolAbility("Sing", 80, 70) };
         ResetHealth();
         ResetStamina();
         updateName();
