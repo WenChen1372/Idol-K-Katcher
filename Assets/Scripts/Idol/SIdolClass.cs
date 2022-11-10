@@ -13,8 +13,10 @@ public class SIdolClass : IdolClass
         Health = 400;
         Stamina = 400;
         IdolTier = 'S';
+        Count = 0;
         ResetHealth();
         ResetStamina();
     }
     #endregion
 }
+

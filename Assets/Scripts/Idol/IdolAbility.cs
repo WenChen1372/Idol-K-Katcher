@@ -11,7 +11,7 @@ public class IdolAbility
     private string abilityName;
     public string AbilityName
     {
-        get; 
+        get;
     }
 
     [SerializeField]
@@ -19,7 +19,7 @@ public class IdolAbility
     private float abilityPower;
     public float AbilityPower
     {
-        get; 
+        get;
     }
 
     [SerializeField]
@@ -27,7 +27,7 @@ public class IdolAbility
     private float abilityCost;
     public float AbilityCost
     {
-        get; 
+        get;
     }
     #endregion
 
@@ -35,9 +35,9 @@ public class IdolAbility
     //constructor
     public IdolAbility(string name, float power, float cost)
     {
-        abilityName = name;
-        abilityPower = power;
-        abilityCost = cost; 
+        AbilityName = name;
+        AbilityPower = power;
+        AbilityCost = cost; 
     }
     #endregion 
 }
