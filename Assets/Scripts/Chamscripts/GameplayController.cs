@@ -78,7 +78,7 @@ public class GameplayController : MonoBehaviour
         }
         //SetOpponentChoice();
 
-        DetermineWinner();
+        //DetermineWinner();
     }
     public void SetOpponentChoice()
     {
@@ -118,39 +118,44 @@ public class GameplayController : MonoBehaviour
                 break;
         }
     }
-    public void DetermineWinner()
-    {
-        print("Testing");
-        if (player_Choice == Opponent_Choice || animationController.reactionTime > 5.0)
-        {
-            //infoText.text = "LOSER ";
-            //StartCoroutine(animationController.DisplayWinner());
-            //animationController.playerChoiceHandlerAnimation.Play("win");
-            return;
-        }
+    //public void DetermineWinner()
+    //{
+    //    print("Testing");
+    //    if (player_Choice == Opponent_Choice || animationController.reactionTime > 5.0)
+    //    {
+    //        //infoText.text = "LOSER ";
+    //        //StartCoroutine(animationController.DisplayWinner());
+    //        //animationController.playerChoiceHandlerAnimation.Play("win");
+    //        return;
+    //    }
 
-        if (player_Choice != Opponent_Choice)
-        {
-            //infoText.text = "WINNER";
+    //    if (player_Choice != Opponent_Choice)
+    //    {
+    //        //infoText.text = "WINNER";
 
-            StartCoroutine(DisplayWinnerAndRestart());
+    //        StartCoroutine(DisplayWinnerAndRestart());
 
-            return;
-        }
+    //        return;
+    //    }
         
 
-    }
+    //}
 
-    IEnumerator DisplayWinnerAndRestart()
-    {
-        yield return new WaitForSeconds(2f);
+    //IEnumerator DisplayWinnerAndRestart()
+    //{
+    //    yield return new WaitForSeconds(2f);
 
-        infoText.gameObject.SetActive(true);
+    //    infoText.gameObject.SetActive(true);
 
-        yield return new WaitForSeconds(2f);
+    //    yield return new WaitForSeconds(2f);
 
-        infoText.gameObject.SetActive(false);
+    //    infoText.gameObject.SetActive(false);
 
-        animationController.ResetAnimations();
-    }
+    //    animationController.ResetAnimations();
+    //}
 }
+
+
+
+
+//Jonas its this one to mess around with 
