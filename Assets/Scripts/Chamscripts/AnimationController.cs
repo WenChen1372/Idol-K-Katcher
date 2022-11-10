@@ -10,6 +10,8 @@ public class AnimationController : MonoBehaviour
     [SerializeField]
     public float reactionTime;
 
+    public float trueTimer;
+
     [SerializeField]
     public float maxTime;
 
@@ -19,14 +21,29 @@ public class AnimationController : MonoBehaviour
 
     public void Start()
     {
-        //choiceAnimation.Play("321");
-        //choiceAnimation.Play("showchamz");
-        //choiceAnimation.Play("321");
-        //playerChoiceHandlerAnimation.Play("showholder");
-        //choiceAnimation.Play("321");
-        clockisTicking = false;
+        
+      
         gameplayController = GetComponent<GameplayController>();
         StartCoroutine(AnimatingStart());
+        reactionTime = 0f;
+        trueTimer = 0f;
+    }
+
+    public void Update()
+    {
+
+        reactionTime += Time.deltaTime;
+        if (reactionTime > 6.5)
+        {
+            trueTimer += Time.deltaTime;
+            print(trueTimer);
+            if (trueTimer > 1.0)
+            {
+                playerChoiceHandlerAnimation.Play("lose");
+                choiceAnimation.Play("ExitButton");
+            }
+            
+        }
 
     }
 
@@ -40,16 +57,11 @@ public class AnimationController : MonoBehaviour
 
         choiceAnimation.Play("showopp");
 
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.5f);
 
         playerChoiceHandlerAnimation.Play("showholder");
-
-        reactionTime = 0f;
-
-        clockisTicking = true;
-
-        reactionTime = Time.time;
-        //playerChoiceHandlerAnimation.Play("win");
+        print(reactionTime);
+        
     }
 
     public void ResetAnimations()
@@ -60,10 +72,9 @@ public class AnimationController : MonoBehaviour
 
     public void PlayerMadeChoice()
     {
-        //choiceAnimation.Play("321");
-        //show the button
+        print(reactionTime);
         playerChoiceHandlerAnimation.Play("RemoveHandler");
-        //choiceAnimation.Play("ShowChoices");
+       
         choiceAnimation.Play("showplayer");
         choiceAnimation.Play("ExitButton");
         ShowWinner();
@@ -75,7 +86,7 @@ public class AnimationController : MonoBehaviour
 
     public void ShowWinner()
     {
-        if (reactionTime < maxTime || gameplayController.Opponent_Choice != gameplayController.player_Choice)
+        if (gameplayController.Opponent_Choice != gameplayController.player_Choice)
         {
             playerChoiceHandlerAnimation.Play("win");
         }

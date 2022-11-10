@@ -23,7 +23,7 @@ public class BattleSystem : MonoBehaviour
 
     //The battleHuds
     public BattleHUD playerHUD;
-    public BattleHUD enemyHUD;
+    public EnemyBattleHUD enemyHUD;
 
     //hard coded temporarily for now;
     AIdolClass V_A;
@@ -92,7 +92,7 @@ public class BattleSystem : MonoBehaviour
             attackName = "Dance";
           }
 
-          else
+          else 
 
           {
             attackName = "Sing";
@@ -209,6 +209,18 @@ public class BattleSystem : MonoBehaviour
 
         StartCoroutine(PlayerAttack(2));
     }
+
+    public void OnSpecialButton()
+    {
+        if (currState != BattleState.PLAYERTURN)
+        {
+            return;
+        }
+
+        StartCoroutine(PlayerAttack(3));
+    }
+
+
 
 
 
