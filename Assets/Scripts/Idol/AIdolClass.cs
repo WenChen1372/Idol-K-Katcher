@@ -8,9 +8,6 @@ public class AIdolClass : IdolClass
     //I wanted to use a constructor here, but Unity says
     //to use awake instead for MonoBehavior classes
     //(Idol Class is a MonoBehavior subclass)
-
-    
-
     private void Awake()
     {
 
@@ -23,7 +20,5 @@ public class AIdolClass : IdolClass
         ResetStamina();
     }
 
-
-    
     #endregion
 }

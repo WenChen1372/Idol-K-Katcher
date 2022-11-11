@@ -121,7 +121,7 @@ public class GameplayController : MonoBehaviour
     public void DetermineWinner()
     {
         print("Testing");
-        if (player_Choice == Opponent_Choice || animationController.reactionTime > 5.0)
+        if (player_Choice == Opponent_Choice || Time.time > 5.0)
         {
             //infoText.text = "LOSER ";
             //StartCoroutine(animationController.DisplayWinner());

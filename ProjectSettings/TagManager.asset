@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Idol
   - TourStop
+  - IdolBattle
   layers:
   - Default
   - TransparentFX
@@ -13,7 +14,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - Below UI
   - 
   - 
   - 

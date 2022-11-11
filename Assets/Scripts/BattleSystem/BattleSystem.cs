@@ -68,6 +68,7 @@ public class BattleSystem : MonoBehaviour
         //name is currently null
 
         //having issues with how the get Name works and its not setting to the instance of the object
+        
         dialogue.text = "A sexy " + enemyIdolComp.getIdolName() + " challenges you";
 
         playerHUD.setHUD(playerIdolComp);

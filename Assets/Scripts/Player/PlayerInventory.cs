@@ -10,6 +10,7 @@ public class PlayerInventory : MonoBehaviour
     public Dictionary<string, Dictionary<char, GameObject>> IdolCollection = new Dictionary<string, Dictionary<char, GameObject>>();
 
 
+
     
 
     //Get all of the Idols the player currently has
@@ -19,10 +20,12 @@ public class PlayerInventory : MonoBehaviour
 
     //addIdol to our collection
     public void addIdol(GameObject Idol)
+
     {   
         IdolClass getIdol = Idol.GetComponent<IdolClass>();
         string name = getIdol.getIdolName();
         char tier = getIdol.IdolTier;
+
 
         if (IdolCollection.ContainsKey(name))
         {
@@ -34,10 +37,12 @@ public class PlayerInventory : MonoBehaviour
 
 
 
+
                 GameObject getIdolStore = tierStorage[tier]; //get the idol
                 IdolClass getIdolComp = getIdolStore.GetComponent<IdolClass>();
                 getIdolComp.Count = getIdolComp.Count += 1; //increase the count of the Idol
                 tierStorage[tier] = getIdolStore; //add the IdolClass back to the tierStorage
+
 
             }
 
@@ -46,8 +51,9 @@ public class PlayerInventory : MonoBehaviour
             {
 
 
+
                 getIdol.Count = getIdol.Count + 1; //increase the Idol count
-                tierStorage.Add(tier, Idol); //add it to our storagee
+
                 
             }
         }
@@ -56,6 +62,7 @@ public class PlayerInventory : MonoBehaviour
        
         {
             Dictionary<char, GameObject> tierStorage = new Dictionary<char, GameObject>(); //make new Dic for the tier since we don't have the Idol
+
             getIdol.Count = getIdol.Count + 1;
             tierStorage.Add(tier, Idol);
             IdolCollection.Add(name, tierStorage); //add our Idol to our Colleciton

@@ -8,6 +8,7 @@ public class Inventory : MonoBehaviour
 
 
 
+
     
     public List<GameObject> cardList = new List<GameObject>();
 
@@ -42,9 +43,11 @@ public class Inventory : MonoBehaviour
         for (int i = 0; i < cardList.Count; i++)
             {
                 GameObject cardHolder = Instantiate(cardHolderPrefab, grid, false);
+
                 GameObject idol = cardList[i];
 
                 IdolClass idolName = idol.GetComponent<IdolClass>();
+
                 IdolCardHolder holderScript = cardHolder.GetComponent<IdolCardHolder>();
 
                 holderScript.idolImage = idolName.getPhotoCard();

@@ -24,7 +24,6 @@ public abstract class IdolClass : MonoBehaviour
         set;
     }
 
-
     //The tier of the idol (S, A, B, C) 
     private char idolTier; 
     public char IdolTier

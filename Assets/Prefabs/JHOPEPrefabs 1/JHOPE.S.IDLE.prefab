@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 513528563589457034}
   m_Layer: 0
   m_Name: JHOPE.S.IDLE
-  m_TagString: Idol
+  m_TagString: IdolBattle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -99,7 +99,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   idolPhotoCard: {fileID: 21300000, guid: 2df5743ad02ac2d4b86bc743af9e9971, type: 3}
-  idolGameObject: {fileID: 0}
   idolName: Jhope
   idolAbilities:
   - abilityName: Aegyo

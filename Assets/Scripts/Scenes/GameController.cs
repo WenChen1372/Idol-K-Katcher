@@ -37,5 +37,10 @@ public class GameController : MonoBehaviour
     {
         Application.Quit(); 
     }
+
+    public void LoadHome()
+    {
+        SceneManager.LoadSceneAsync("MainMenu"); 
+    }
     #endregion 
 }
