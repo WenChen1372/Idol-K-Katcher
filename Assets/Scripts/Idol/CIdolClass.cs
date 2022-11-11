@@ -13,7 +13,6 @@ public class CIdolClass : IdolClass
         Health = 50;
         Stamina = 50;
         IdolTier = 'C'; 
-        IdolAbilities = new IdolAbility[] {new IdolAbility("Aegyo", 0.2f, 10), new IdolAbility("Dance", 10, 5), new IdolAbility("Sing", 30, 20)};
         ResetHealth();
         ResetStamina(); 
     }
