@@ -6,36 +6,41 @@ using UnityEngine.SceneManagement;
 public class GameController : MonoBehaviour
 {
     #region Scene Transition Methods
-    private void LoadMapScene()
+    public void LoadMapScene()
     {
         SceneManager.LoadSceneAsync("Location-basedGame");
     }
 
-    private void LoadInventory()
+    public void LoadInventory()
     {
         SceneManager.LoadSceneAsync("Collection");
     }
 
-    private void LoadCham()
+    public void LoadCham()
     {
         SceneManager.LoadSceneAsync("Cham"); 
     }
 
-    private void LoadBattle()
+    public void LoadBattle()
     {
         SceneManager.LoadSceneAsync("BattleSimulator"); 
     }
 
-    private void LoadTrading()
+    public void LoadTrading()
     {
         //SceneManager.LoadSceneAsync(""); 
     }
     #endregion
 
     #region Quit Methods
-    private void QuitGame()
+    public void QuitGame()
     {
         Application.Quit(); 
+    }
+
+    public void LoadHome()
+    {
+        SceneManager.LoadSceneAsync("MainMenu"); 
     }
     #endregion 
 }

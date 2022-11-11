@@ -23,16 +23,6 @@ public abstract class IdolClass : MonoBehaviour
         set;
     }
 
-    //The name of the Idol
-    
-    [SerializeField]
-    private string idolname;
-    public string IdolName
-    {
-        get;
-        set;
-    }
-
     //The tier of the idol (S, A, B, C) 
     private char idolTier; 
     public char IdolTier
