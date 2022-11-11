@@ -21,9 +21,27 @@ public abstract class IdolClass : MonoBehaviour
         set;
     }
 
+    //The name of the Idol
+    
+    [SerializeField]
+    private string idolname;
+    public string IdolName
+    {
+        get;
+        set;
+    }
+
     //The tier of the idol (S, A, B, C) 
     private char idolTier; 
     public char IdolTier
+    {
+        get;
+        set;
+    }
+
+    //The amount of copies we have of this idol
+    private int count;
+    public int Count
     {
         get;
         set;
@@ -42,7 +60,8 @@ public abstract class IdolClass : MonoBehaviour
     private float curHealth;
     public float CurHealth
     {
-        get; 
+        get;
+        set;
     }
 
     //The current stamina of the idol
@@ -50,7 +69,8 @@ public abstract class IdolClass : MonoBehaviour
     private float curStamina; 
     public float CurStamina
     {
-        get; 
+        get;
+        set;
     }
     #endregion
 
@@ -68,6 +88,7 @@ public abstract class IdolClass : MonoBehaviour
     }
     #endregion
 
+
     #region Health/Stamina Methods
     //These two methods reset the current health/stamina to the original health and stamina stat of the idol
     //This is good to be used before a battle scene to make sure idol is full health and stamina
@@ -84,14 +105,24 @@ public abstract class IdolClass : MonoBehaviour
     //These two methods change the current health/stamina by a certain amount
     //This is good to be used when getting attacked/using attacks in battle 
     //Can be positive or negative
-    public void ChangeHealth(float amount)
+    public bool ChangeHealth(float amount)
     {
-        curHealth += amount; 
+        CurHealth -= amount; 
+
+        if (CurHealth <=0)
+        {
+            return true;
+        }
+
+        else 
+        {
+            return false;
+        }
     }
 
     public void ChangeStamina(float amount)
     {
-        curStamina += amount; 
+        curStamina -= amount; 
     }
     #endregion 
 }

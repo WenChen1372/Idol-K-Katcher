@@ -76,9 +76,7 @@ public class GameplayController : MonoBehaviour
 
                 break;
         }
-        //SetOpponentChoice();
-
-        //DetermineWinner();
+       
     }
     public void SetOpponentChoice()
     {
