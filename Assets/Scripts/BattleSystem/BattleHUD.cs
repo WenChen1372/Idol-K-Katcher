@@ -21,18 +21,20 @@ public class BattleHUD : MonoBehaviour
     //set the HUD
     public void setHUD(IdolClass idol)
     {
-        idolNameText.text = idol.IdolName;
+        idolNameText.text = idol.getIdolName();
         idolTierText.text = idol.IdolTier.ToString();
         hpSlider.maxValue = idol.Health;
         hpSlider.value = idol.CurHealth;
         staminaSlider.maxValue = idol.Stamina;
         staminaSlider.value = idol.CurStamina;
-        aegyoDmg.text = "DMG: " + idol.IdolAbilities[0].AbilityPower.ToString();
-        aegyoCost.text = "Mana: " + idol.IdolAbilities[0].AbilityCost.ToString();
-        singDmg.text = "DMG: " + idol.IdolAbilities[1].AbilityPower.ToString();
-        singCost.text = "Mana: " + idol.IdolAbilities[1].AbilityCost.ToString();
-        danceDmg.text = "DMG: " + idol.IdolAbilities[2].AbilityPower.ToString();
-        danceCost.text = "Mana: " + idol.IdolAbilities[2].AbilityCost.ToString();
+        IdolAbility[] save = idol.getIdolAbility();
+        aegyoDmg.text = "DMG: " + save[0].getAbilityPower().ToString();
+        Debug.Log(save[0].getAbilityPower().ToString());
+        aegyoCost.text = "Mana: " + save[0].getAbilityCost().ToString();
+        singDmg.text = "DMG: " + save[1].getAbilityPower().ToString();
+        singCost.text = "Mana: " + save[1].getAbilityCost().ToString();
+        danceDmg.text = "DMG: " + save[2].getAbilityPower().ToString();
+        danceCost.text = "Mana: " + save[2].getAbilityCost().ToString();
     }
 
 

@@ -31,6 +31,21 @@ public class IdolAbility
     }
     #endregion
 
+    public string getAbilityName()
+    {
+        return abilityName;
+    }
+
+    public float getAbilityPower()
+    {
+        return abilityPower;
+    }
+
+    public float getAbilityCost()
+    {
+        return abilityCost;
+    }
+
     #region Constructor Method
     //constructor
     public IdolAbility(string name, float power, float cost)

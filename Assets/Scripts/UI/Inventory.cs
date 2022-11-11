@@ -6,9 +6,10 @@ using UnityEngine.UI;
 public class Inventory : MonoBehaviour
 {
 
-    public Inventory inventory;
 
-    private List<IdolClass> cardList = new List<IdolClass>();
+
+    
+    public List<GameObject> cardList = new List<GameObject>();
 
     public GameObject cardHolderPrefab;
 
@@ -29,8 +30,7 @@ public class Inventory : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        inventory = this;
-        playerInventory = GameObject.Find("Player").GetComponent<PlayerInventory>();
+        
         FillInventory();
 
     }
@@ -38,16 +38,17 @@ public class Inventory : MonoBehaviour
     void FillInventory()
     {
 
-        cardList = playerInventory.allIdols();
 
         for (int i = 0; i < cardList.Count; i++)
             {
                 GameObject cardHolder = Instantiate(cardHolderPrefab, grid, false);
-                IdolClass idol = cardList[i];
+                GameObject idol = cardList[i];
+
+                IdolClass idolName = idol.GetComponent<IdolClass>();
                 IdolCardHolder holderScript = cardHolder.GetComponent<IdolCardHolder>();
 
-                holderScript.idolImage.sprite = idol.IdolPhotoCard;
-                holderScript.idolCount.GetComponent<Text>().text = "Amount " + idol.Count; 
+                holderScript.idolImage = idolName.getPhotoCard();
+
 
             }
 

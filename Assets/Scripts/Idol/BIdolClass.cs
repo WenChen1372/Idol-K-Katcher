@@ -27,19 +27,9 @@ public class BIdolClass : IdolClass
         IdolTier = 'B';
         ResetHealth();
         ResetStamina();
-        updateName();
     }
 
-    private void Update()
-    {
-        updateName();
-    }
 
-    private void updateName()
-
-    {
-        IdolName = IdolNameTest;
-    }
 
     #endregion
 }
