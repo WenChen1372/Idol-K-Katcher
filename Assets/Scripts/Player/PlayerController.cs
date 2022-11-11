@@ -33,7 +33,7 @@ public class PlayerController : MonoBehaviour, IDataPersistance
     {
         //Only accounts for 1 touch
         //Will not consider multiple touches
-        if (other.CompareTag("Idol"))
+        if (other.CompareTag("Idol") || other.CompareTag("IdolBattle"))
         {
             //Only accounts for 1 touch
             //Will not consider multiple touches
@@ -42,7 +42,14 @@ public class PlayerController : MonoBehaviour, IDataPersistance
                 RaycastHit hit;
                 if (other.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, Mathf.Infinity))
                 {
-                    SceneManager.LoadScene("Cham");
+                    if (other.CompareTag("Idol"))
+                    {
+                        SceneManager.LoadScene("Cham");
+                    }
+                    else
+                    {
+                        SceneManager.LoadScene("BattleSimulator"); 
+                    }
                 }
             }
         }

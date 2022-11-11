@@ -8,27 +8,27 @@ public class IdolSpawner : MonoBehaviour
     //this should later be changed to a list of Idol class or child of Idol class
     [SerializeField]
     [Tooltip("A list of C tier idols to spawn")]
-    private GameObject m_IdolsC;
+    private GameObject[] m_IdolsC;
 
     //this should later be changed to a list of Idol class or child of Idol class
     [SerializeField]
     [Tooltip("A list of B tier idols to spawn")]
-    private GameObject m_IdolsB;
+    private GameObject[] m_IdolsB;
 
     //this should later be changed to a list of Idol class or child of Idol class
     [SerializeField]
     [Tooltip("A list of A tier idols to spawn")]
-    private GameObject m_IdolsA;
+    private GameObject[] m_IdolsA;
 
     //this should later be changed to a list of Idol class or child of Idol class
     [SerializeField]
     [Tooltip("A list of S tier idols to spawn")]
-    private GameObject m_IdolsS;
+    private GameObject[] m_IdolsS;
 
     //this should later be changed to a Tour Stop class object 
     [SerializeField]
-    [Tooltip("TourStop game object to spawn")]
-    private GameObject m_TourStop;
+    [Tooltip("Battle game object to spawn")]
+    private GameObject m_BattleObject;
 
     [SerializeField]
     [Tooltip("Player transform in which the spawn location will be based off of")]
@@ -100,57 +100,35 @@ public class IdolSpawner : MonoBehaviour
         float y = m_YPos;
         float z = m_PlayerTransform.position.z + RandomCoordinate();
         Vector3 position = new Vector3(x, y, z);
+        x = m_PlayerTransform.position.x + RandomCoordinate();
+        y = m_YPos;
+        z = m_PlayerTransform.position.z + RandomCoordinate();
+        Vector3 position2 = new Vector3(x, y, z); 
 
-        float percent = Random.value; 
+        float percent = Random.value;
+        System.Random r = new System.Random();
+        int idolNum = 0; 
+        if (percent < 0.5)
+        {
+            Instantiate(m_BattleObject, position2, Quaternion.Euler(90, 0, 0)); 
+        } 
         if (percent < m_ProbabilityS)
         {
-            Instantiate(m_IdolsS, position, Quaternion.Euler(90, 0, 0)); 
+            Instantiate(m_IdolsS[idolNum], position, Quaternion.Euler(90, 0, 0)); 
         } 
         else if (percent < m_ProbabilityS + m_ProbabilityA)
         {
-            Instantiate(m_IdolsA, position, Quaternion.Euler(90, 0, 0));
+            Instantiate(m_IdolsA[idolNum], position, Quaternion.Euler(90, 0, 0));
         } 
         else if (percent < m_ProbabilityS + m_ProbabilityA + m_ProbabilityB)
         {
-            Instantiate(m_IdolsB, position, Quaternion.Euler(90, 0, 0));
+            Instantiate(m_IdolsB[idolNum], position, Quaternion.Euler(90, 0, 0));
         } 
         else if (percent < m_ProbabilityS + m_ProbabilityA + m_ProbabilityB + m_ProbabilityC)
         {
-            Instantiate(m_IdolsC, position, Quaternion.Euler(90, 0, 0));
+            Instantiate(m_IdolsC[idolNum], position, Quaternion.Euler(90, 0, 0));
         } 
         
-    }
-    #endregion
-
-    #region Spawning Tour Stop Methods
-    private IEnumerator SpawnTourStop()
-    {
-        while (true)
-        {
-            InstantiateTourStop();
-            yield return new WaitForSeconds(m_WaitTime);
-        }
-    }
-
-    private void InstantiateTourStop()
-    {
-        //X is left and right
-        //Y is depth, will always stay consistent 
-        //Z is up and down
-        float x = m_PlayerTransform.position.x + RandomCoordinate();
-        float y = m_YPos;
-        float z = m_PlayerTransform.position.z + RandomCoordinate();
-        Vector3 position = new Vector3(x, y, z);
-
-        float percent = Random.value;
-        if (percent < m_ProbabilityTourStop)
-        {
-            Instantiate(m_TourStop, position, Quaternion.Euler(90, 0, 0)); 
-        } 
-        else
-        {
-            return; 
-        }
     }
     #endregion
 
