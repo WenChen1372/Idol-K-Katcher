@@ -14,7 +14,7 @@ public class EnemyBattleHUD : MonoBehaviour
     //set the HUD
     public void setHUD(IdolClass idol)
     {
-        idolNameText.text = idol.IdolName;
+        idolNameText.text = idol.getIdolName();
         idolTierText.text = idol.IdolTier.ToString();
         hpSlider.maxValue = idol.Health;
         hpSlider.value = idol.CurHealth;

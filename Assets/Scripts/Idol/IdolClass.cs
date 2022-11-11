@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public abstract class IdolClass : MonoBehaviour
 {
@@ -68,10 +69,15 @@ public abstract class IdolClass : MonoBehaviour
     //Doesn't need setter, since will be handled in inspector
     [SerializeField]
     [Tooltip("The 2D SPRITE of the associated photocard with the idol")]
-    private Sprite idolPhotoCard;
-    public Sprite IdolPhotoCard
+    private Image idolPhotoCard;
+    public Image IdolPhotoCard
     {
         get;
+    }
+
+    public Image getPhotoCard()
+    {
+        return idolPhotoCard;
     }
 
     [SerializeField]
@@ -82,6 +88,12 @@ public abstract class IdolClass : MonoBehaviour
         get; 
     }
 
+    public string getIdolName()
+    {
+        return idolName;
+    }
+    
+
     [SerializeField]
     [Tooltip("The list of abilities of the idol")]
     private IdolAbility[] idolAbilities;
@@ -90,6 +102,11 @@ public abstract class IdolClass : MonoBehaviour
         get;
     }
     #endregion
+
+    public IdolAbility[] getIdolAbility()
+    {
+        return idolAbilities;
+    }
 
 
     #region Health/Stamina Methods

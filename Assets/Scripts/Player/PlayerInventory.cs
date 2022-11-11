@@ -11,6 +11,7 @@ public class PlayerInventory : MonoBehaviour
 
 
 
+    
 
     //Get all of the Idols the player currently has
     public Dictionary<string, Dictionary<char, GameObject>> GetIdolCollection() {
@@ -19,11 +20,12 @@ public class PlayerInventory : MonoBehaviour
 
     //addIdol to our collection
     public void addIdol(GameObject Idol)
-    {
 
-        IdolClass tempIdol = Idol.GetComponent<IdolClass>();
-        string name = tempIdol.IdolName;
-        char tier = tempIdol.IdolTier;
+    {   
+        IdolClass getIdol = Idol.GetComponent<IdolClass>();
+        string name = getIdol.getIdolName();
+        char tier = getIdol.IdolTier;
+
 
         if (IdolCollection.ContainsKey(name))
         {
@@ -33,18 +35,25 @@ public class PlayerInventory : MonoBehaviour
             if (tierStorage.ContainsKey(tier))
             {
 
-                GameObject getIdol = tierStorage[tier]; //get the idol
-                IdolClass thisIdol = getIdol.GetComponent<IdolClass>();
-                thisIdol.Count = thisIdol.Count += 1; //increase the count of the Idol
-                tierStorage[tier] = getIdol; //add the IdolClass back to the tierStorage
+
+
+
+                GameObject getIdolStore = tierStorage[tier]; //get the idol
+                IdolClass getIdolComp = getIdolStore.GetComponent<IdolClass>();
+                getIdolComp.Count = getIdolComp.Count += 1; //increase the count of the Idol
+                tierStorage[tier] = getIdolStore; //add the IdolClass back to the tierStorage
+
 
             }
 
             else
 
             {
-                tempIdol.Count = tempIdol.Count + 1; //increase the Idol count
-                tierStorage.Add(tier, Idol); //add it to our storagee
+
+
+
+                getIdol.Count = getIdol.Count + 1; //increase the Idol count
+
                 
             }
         }
@@ -53,7 +62,8 @@ public class PlayerInventory : MonoBehaviour
        
         {
             Dictionary<char, GameObject> tierStorage = new Dictionary<char, GameObject>(); //make new Dic for the tier since we don't have the Idol
-            tempIdol.Count = tempIdol.Count + 1;
+
+            getIdol.Count = getIdol.Count + 1;
             tierStorage.Add(tier, Idol);
             IdolCollection.Add(name, tierStorage); //add our Idol to our Colleciton
         }

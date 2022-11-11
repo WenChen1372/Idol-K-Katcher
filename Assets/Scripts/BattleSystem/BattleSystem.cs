@@ -25,9 +25,9 @@ public class BattleSystem : MonoBehaviour
     public BattleHUD playerHUD;
     public EnemyBattleHUD enemyHUD;
 
-    //hard coded temporarily for now;
-    AIdolClass V_A;
-    BIdolClass V_B;
+    //The idol prefabs components
+    IdolClass playerIdolComp;
+    IdolClass enemyIdolComp;
 
     // Start is called before the first frame update
     void Start()
@@ -38,26 +38,41 @@ public class BattleSystem : MonoBehaviour
         
     }
 
+    //Set our player GameObject
+    public void setPlayerIdol(GameObject ourIdol)
+    {
+        playerIdolPrefab = ourIdol;
+    }
+
+    //Set out enemy GameObject
+    public void setEnemyIdol(GameObject enemyIdol)
+    {
+        enemyIdolPrefab = enemyIdol;
+    }
+
     IEnumerator BeginBattle()
     {
         GameObject playerIdol = Instantiate(playerIdolPrefab, playerIdolSpawn);
+
+        Debug.Log(playerIdol == null);
         //might need to change how we get the Idol Classes
         //can use if statements to get Component based off of the tier
-        V_A = playerIdol.GetComponent<AIdolClass>();
-        Debug.Log(V_A.CurHealth);
-        Debug.Log(V_A.IdolName);
+        playerIdolComp = playerIdol.GetComponent<IdolClass>();
+        Debug.Log(playerIdolComp.CurHealth);
+        Debug.Log(playerIdolComp.getIdolName());
         
         
         GameObject enemyIdol = Instantiate(enemyIdolPrefab, enemyIdolSpawn);
-        V_B = enemyIdol.GetComponent<BIdolClass>();
-        
+        enemyIdolComp = enemyIdol.GetComponent<IdolClass>();
+        Debug.Log(enemyIdolComp.getIdolName());
         //name is currently null
 
         //having issues with how the get Name works and its not setting to the instance of the object
-        dialogue.text = "A sexy " + V_B.IdolName + " challenges you";
+        
+        dialogue.text = "A sexy " + enemyIdolComp.getIdolName() + " challenges you";
 
-        playerHUD.setHUD(V_A);
-        enemyHUD.setHUD(V_B);
+        playerHUD.setHUD(playerIdolComp);
+        enemyHUD.setHUD(enemyIdolComp);
 
         yield return new WaitForSeconds(2f);
 
@@ -75,10 +90,10 @@ public class BattleSystem : MonoBehaviour
     IEnumerator PlayerAttack(int attackNum)
     {
         
-          IdolAbility aegyo = V_A.IdolAbilities[attackNum];
-          float damage = aegyo.AbilityPower;
-          Debug.Log(aegyo.AbilityPower);
-          float cost = aegyo.AbilityCost;
+          IdolAbility attack = playerIdolComp.IdolAbilities[attackNum];
+          float damage = attack.AbilityPower;
+          Debug.Log(attack.AbilityPower);
+          float cost = attack.AbilityCost;
           string attackName;
 
           if(attackNum == 0)
@@ -98,19 +113,19 @@ public class BattleSystem : MonoBehaviour
             attackName = "Sing";
           }
 
-          if (V_A.CurStamina < cost)
+          if (playerIdolComp.CurStamina < cost)
           {
             dialogue.text = "You don't have enough stamina";
           }
 
           else 
           {
-            bool isDead = V_B.ChangeHealth(damage);
-            enemyHUD.SetHp(V_B.CurHealth);
-            Debug.Log(V_B.CurHealth);
+            bool isDead = enemyIdolComp.ChangeHealth(damage);
+            enemyHUD.SetHp(enemyIdolComp.CurHealth);
+            Debug.Log(enemyIdolComp.CurHealth);
             
             playerHUD.SetStamina(cost);
-            V_A.ChangeStamina(cost);
+            playerIdolComp.ChangeStamina(cost);
 
             dialogue.text = "You used an " + attackName +  " attack";
 
@@ -142,12 +157,12 @@ public class BattleSystem : MonoBehaviour
 
         yield return new WaitForSeconds(2f);
 
-        IdolAbility aegyo = V_B.IdolAbilities[0];
-        float damage = -1*aegyo.AbilityPower;
-        float cost = aegyo.AbilityCost;
+        IdolAbility attack = enemyIdolComp.IdolAbilities[0];
+        float damage = -1*attack.AbilityPower;
+        float cost = attack.AbilityCost;
 
-        bool isDead = V_A.ChangeHealth(damage);
-        playerHUD.SetHp(V_A.CurHealth);
+        bool isDead = playerIdolComp.ChangeHealth(damage);
+        playerHUD.SetHp(playerIdolComp.CurHealth);
 
         yield return new WaitForSeconds(1f);
 

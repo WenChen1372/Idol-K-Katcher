@@ -12,10 +12,13 @@ public class AIdolClass : IdolClass
     {
 
         Health = 200;
+        CurHealth = 200;
         Stamina = 200;
+        CurStamina = 200;
         IdolTier = 'A';
         ResetHealth();
         ResetStamina();
     }
+
     #endregion
 }

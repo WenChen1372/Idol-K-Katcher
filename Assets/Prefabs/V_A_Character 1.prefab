@@ -129,6 +129,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c86168c6be88e841b399ab4d29a718e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  idolname: V
   idolPhotoCard: {fileID: 0}
+  idolName: V
+  idolAbilities: []
   IdolNameTest: V
