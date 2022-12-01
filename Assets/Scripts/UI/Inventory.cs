@@ -10,7 +10,7 @@ public class Inventory : MonoBehaviour
 
 
     
-    public List<GameObject> cardList = new List<GameObject>();
+    public List<GameObject> cardList;
 
     public GameObject cardHolderPrefab;
 
@@ -18,15 +18,7 @@ public class Inventory : MonoBehaviour
 
     private PlayerInventory playerInventory;
 
-
-
-    //private List<GameObject> cardListHolder = new List<GameObject>();
-
-    //in our code we want it so that depending on the Player Manager player collection we want to add it to our inventory to show;
-    //when you select a card and you have enough for upgrade you want the the ecchange button to highlight
-
     
-
 
     // Start is called before the first frame update
     void Start()
@@ -46,11 +38,20 @@ public class Inventory : MonoBehaviour
 
                 GameObject idol = cardList[i];
 
-                IdolClass idolName = idol.GetComponent<IdolClass>();
+                IdolClass idolClass = idol.GetComponent<IdolClass>();
+
+        
+
+                //get the photo
+
+                Sprite photocard = idolClass.getPhotoCard();
+
 
                 IdolCardHolder holderScript = cardHolder.GetComponent<IdolCardHolder>();
 
-                holderScript.idolImage = idolName.getPhotoCard();
+
+                holderScript.setImage(photocard);
+
 
 
             }

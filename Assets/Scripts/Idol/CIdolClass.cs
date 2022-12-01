@@ -13,8 +13,8 @@ public class CIdolClass : IdolClass
         Health = 50;
         Stamina = 50;
         IdolTier = 'C'; 
-        ResetHealth();
-        ResetStamina(); 
+        CurHealth = 50;
+        CurStamina = 50;
     }
     #endregion 
 }
