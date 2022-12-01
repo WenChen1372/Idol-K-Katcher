@@ -27,8 +27,12 @@ public class IdolSpawner : MonoBehaviour
 
     //this should later be changed to a Tour Stop class object 
     [SerializeField]
+    [Tooltip("Tour Stop game object to spawn")]
+    private GameObject m_TourStopObject;
+
+    [SerializeField]
     [Tooltip("Battle game object to spawn")]
-    private GameObject m_BattleObject;
+    private GameObject m_BattleObject; 
 
     [SerializeField]
     [Tooltip("Player transform in which the spawn location will be based off of")]
@@ -55,6 +59,10 @@ public class IdolSpawner : MonoBehaviour
     private float m_ProbabilityTourStop;
 
     [SerializeField]
+    [Tooltip("Probability that battle object will spawn")]
+    private float m_ProbabilityBattle;
+
+    [SerializeField]
     [Tooltip("Max range of spawn point from player (1 unit = 1 meter")]
     private float m_MinRange;
 
@@ -64,8 +72,16 @@ public class IdolSpawner : MonoBehaviour
 
     //later add min/max wait time
     [SerializeField]
-    [Tooltip("Wait time between each droid spawn in seconds")]
+    [Tooltip("Wait time between each idol spawn in seconds")]
     private float m_WaitTime;
+
+    [SerializeField]
+    [Tooltip("Wait time between each tour stop spawn in seconds")]
+    private float m_WaitTimeTour;
+
+    [SerializeField]
+    [Tooltip("Wait time between each battle spawn in seconds")]
+    private float m_WaitTimeBattle;
 
     [SerializeField]
     [Tooltip("The y position of 2D assets on 3D map (same as player, etc.)")]
@@ -76,8 +92,9 @@ public class IdolSpawner : MonoBehaviour
     private void Start()
     {
         StartCoroutine(SpawnIdols());
-        //Just for Milestone 1 disable this
-        //StartCoroutine(SpawnTourStop()); 
+        StartCoroutine(SpawnTour());
+        StartCoroutine(SpawnBattle());
+
     }
     #endregion
 
@@ -91,6 +108,24 @@ public class IdolSpawner : MonoBehaviour
         }
     }
 
+    private IEnumerator SpawnTour()
+    {
+        while (true)
+        {
+            InstantiateTourStop();
+            yield return new WaitForSeconds(m_WaitTimeTour);
+        }
+    }
+
+    private IEnumerator SpawnBattle()
+    {
+        while (true)
+        {
+            InstantiateBattle();
+            yield return new WaitForSeconds(m_WaitTimeBattle);
+        }
+    }
+
     private void InstantiateIdol()
     {
         //X is left and right
@@ -100,18 +135,9 @@ public class IdolSpawner : MonoBehaviour
         float y = m_YPos;
         float z = m_PlayerTransform.position.z + RandomCoordinate();
         Vector3 position = new Vector3(x, y, z);
-        x = m_PlayerTransform.position.x + RandomCoordinate();
-        y = m_YPos;
-        z = m_PlayerTransform.position.z + RandomCoordinate();
-        Vector3 position2 = new Vector3(x, y, z); 
 
         float percent = Random.value;
-        System.Random r = new System.Random();
-        int idolNum = 0; 
-        if (percent < 0.5)
-        {
-            Instantiate(m_BattleObject, position2, Quaternion.Euler(90, 0, 0)); 
-        } 
+        int idolNum = Random.Range(0, m_IdolsA.Length-1); 
         if (percent < m_ProbabilityS)
         {
             Instantiate(m_IdolsS[idolNum], position, Quaternion.Euler(90, 0, 0)); 
@@ -129,6 +155,34 @@ public class IdolSpawner : MonoBehaviour
             Instantiate(m_IdolsC[idolNum], position, Quaternion.Euler(90, 0, 0));
         } 
         
+    }
+
+    private void InstantiateTourStop()
+    {
+        float x = m_PlayerTransform.position.x + RandomCoordinate();
+        float y = m_YPos;
+        float z = m_PlayerTransform.position.z + RandomCoordinate();
+        Vector3 position2 = new Vector3(x, y, z);
+
+        float percent = Random.value;
+        if (percent < m_ProbabilityTourStop)
+        {
+            Instantiate(m_TourStopObject, position2, Quaternion.Euler(90, 0, 0));
+        }
+    }
+
+    private void InstantiateBattle()
+    {
+        float x = m_PlayerTransform.position.x + RandomCoordinate();
+        float y = m_YPos;
+        float z = m_PlayerTransform.position.z + RandomCoordinate();
+        Vector3 position2 = new Vector3(x, y, z);
+
+        float percent = Random.value;
+        if (percent < m_ProbabilityBattle)
+        {
+            Instantiate(m_BattleObject, position2, Quaternion.Euler(90, 0, 0));
+        }
     }
     #endregion
 

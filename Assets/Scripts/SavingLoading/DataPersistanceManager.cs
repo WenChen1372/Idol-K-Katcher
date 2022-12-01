@@ -1,7 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System.Linq; 
+using System.Linq;
+using UnityEngine.SceneManagement; 
 
 public class DataPersistanceManager : MonoBehaviour
 {
@@ -38,16 +39,14 @@ public class DataPersistanceManager : MonoBehaviour
     {
         if (instance != null)
         {
-            Debug.LogError("More than one Data Persistance Manager in the scene"); 
+            Debug.Log("More than one Data Persistance Manager in the scene. Destroying the newest one.");
+            Destroy(this.gameObject);
+            return; 
         }
-        instance = this; 
-    }
+        instance = this;
+        DontDestroyOnLoad(this.gameObject);
 
-    private void Start()
-    {
-        dataHandler = new FileDataHandler(Application.persistentDataPath, fileName); 
-        dataPersistanceObjects = FindAllDataPersistanceObjects(); 
-        LoadGame();
+        dataHandler = new FileDataHandler(Application.persistentDataPath, fileName);
     }
     #endregion
 
@@ -66,7 +65,7 @@ public class DataPersistanceManager : MonoBehaviour
         //if no data to be loaded, just make a new game 
         if (this.gameData == null)
         {
-            Debug.LogError("No data to be loaded, create new game");
+            Debug.Log("No data to be loaded, create new game");
             NewGame(); 
         }
 
@@ -110,6 +109,25 @@ public class DataPersistanceManager : MonoBehaviour
             OfType<IDataPersistance>();
 
         return new List<IDataPersistance>(dataPersistanceObjects); 
+    }
+    #endregion
+
+    #region SceneLoading Methods
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded; 
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    public void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        Debug.Log("OnSceneLoaded Called");
+        dataPersistanceObjects = FindAllDataPersistanceObjects();
+        LoadGame();
     }
     #endregion 
 }
