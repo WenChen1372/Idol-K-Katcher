@@ -1890,7 +1890,11 @@ MonoBehaviour:
   reactionTime: 0
   trueTimer: 0
   maxTime: 6
-  clockisTicking: 0
+  stillGoing: 1
+  left: {fileID: 1903973921}
+  right: {fileID: 100049510}
+  down: {fileID: 1292331870}
+  up: {fileID: 2119066882}
 --- !u!4 &1317513824
 Transform:
   m_ObjectHideFlags: 0

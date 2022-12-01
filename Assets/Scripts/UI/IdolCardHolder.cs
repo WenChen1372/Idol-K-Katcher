@@ -12,6 +12,11 @@ public class IdolCardHolder : MonoBehaviour
 	public GameObject idolCount;
 	public Image idolImage;
 
+    
+    public void setImage(Sprite card)
+    {
+        idolImage.sprite = card;
+    }
 
 
 

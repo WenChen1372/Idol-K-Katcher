@@ -6,9 +6,11 @@ using UnityEngine.UI;
 public class Inventory : MonoBehaviour
 {
 
-    public Inventory inventory;
 
-    private List<GameObject> cardList = new List<GameObject>();
+
+
+    
+    public List<GameObject> cardList;
 
     public GameObject cardHolderPrefab;
 
@@ -16,21 +18,12 @@ public class Inventory : MonoBehaviour
 
     private PlayerInventory playerInventory;
 
-
-
-    //private List<GameObject> cardListHolder = new List<GameObject>();
-
-    //in our code we want it so that depending on the Player Manager player collection we want to add it to our inventory to show;
-    //when you select a card and you have enough for upgrade you want the the ecchange button to highlight
-
     
-
 
     // Start is called before the first frame update
     void Start()
     {
-        inventory = this;
-        playerInventory = GameObject.Find("Player").GetComponent<PlayerInventory>();
+        
         FillInventory();
 
     }
@@ -38,16 +31,28 @@ public class Inventory : MonoBehaviour
     void FillInventory()
     {
 
-        cardList = playerInventory.allIdols();
 
         for (int i = 0; i < cardList.Count; i++)
             {
                 GameObject cardHolder = Instantiate(cardHolderPrefab, grid, false);
-                IdolClass idol = cardList[i].GetComponent<IdolClass>(); //cardlist is a gameObject
+
+                GameObject idol = cardList[i];
+
+                IdolClass idolClass = idol.GetComponent<IdolClass>();
+
+        
+
+                //get the photo
+
+                Sprite photocard = idolClass.getPhotoCard();
+
+
                 IdolCardHolder holderScript = cardHolder.GetComponent<IdolCardHolder>();
 
-                holderScript.idolImage.sprite = idol.IdolPhotoCard;
-                holderScript.idolCount.GetComponent<Text>().text = "Amount " + idol.Count; 
+
+                holderScript.setImage(photocard);
+
+
 
             }
 
