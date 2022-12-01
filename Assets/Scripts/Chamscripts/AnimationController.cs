@@ -46,7 +46,8 @@ public class AnimationController : MonoBehaviour
                 if (trueTimer > maxTime)
                 {
                     playerChoiceHandlerAnimation.Play("lose");
-                    choiceAnimation.Play("321");
+                    //choiceAnimation.Play("losingexit");
+                    choiceAnimation.Play("ExitButton");
                     print("Stoppedtrue " + trueTimer);
                     stillGoing = false;
                 }
