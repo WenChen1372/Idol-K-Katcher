@@ -50,6 +50,11 @@ public abstract class IdolClass : MonoBehaviour
         set;
     }
 
+    public float getCurHealth()
+    {
+        return curHealth;
+    }
+
     //The current stamina of the idol
     //Set through other methods
     private float curStamina; 
@@ -69,13 +74,13 @@ public abstract class IdolClass : MonoBehaviour
     //Doesn't need setter, since will be handled in inspector
     [SerializeField]
     [Tooltip("The 2D SPRITE of the associated photocard with the idol")]
-    private Image idolPhotoCard;
-    public Image IdolPhotoCard
+    private Sprite idolPhotoCard;
+    public Sprite IdolPhotoCard
     {
         get;
     }
 
-    public Image getPhotoCard()
+    public Sprite getPhotoCard()
     {
         return idolPhotoCard;
     }
@@ -114,12 +119,12 @@ public abstract class IdolClass : MonoBehaviour
     //This is good to be used before a battle scene to make sure idol is full health and stamina
     public void ResetHealth()
     {
-        curHealth = health;
+        CurHealth = Health;
     }
 
     public void ResetStamina()
     {
-        curStamina = stamina; 
+        CurStamina = Stamina; 
     }
 
     //These two methods change the current health/stamina by a certain amount
@@ -142,7 +147,38 @@ public abstract class IdolClass : MonoBehaviour
 
     public void ChangeStamina(float amount)
     {
-        curStamina -= amount; 
+        CurStamina -= amount; 
     }
-    #endregion 
+    #endregion
+
+    public void RegenHealth(float amount)
+    {
+        CurHealth += amount;
+        if (CurHealth >= Health)
+        {
+            CurHealth = Health;
+        }
+    }
+
+    public void RegenStamina(float amount)
+    {
+        CurStamina += amount;
+        if (CurStamina >= Stamina)
+        {
+            CurStamina = Stamina;
+        }
+    }
+
+    public void SwapHealth(float amount, float maxHp)
+    {
+
+        Health = amount;
+        CurHealth = amount;
+    }
+
+    public void SwapStamina(float amount, float maxStamina)
+    {
+        Stamina = amount;
+        CurStamina = amount;
+    }
 }

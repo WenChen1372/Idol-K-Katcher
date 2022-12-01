@@ -26,6 +26,22 @@ public class PlayerController : MonoBehaviour, IDataPersistance
     {
         get;
     }
+
+    //player xp amount to level up
+    private int upgradeXp; 
+    public int UpgradeXp
+    {
+        get; 
+    }
+
+    //struct containing 2 values to keep track of idol object for "Cham" and "Battle" 
+    //1.)idol as game object
+    //2.)which mode as title of scene
+    public struct currIdol
+    {
+        IdolClass idol;
+        string sceneName; 
+    }
     #endregion
 
     #region Trigger Methods
@@ -44,10 +60,14 @@ public class PlayerController : MonoBehaviour, IDataPersistance
                 {
                     if (other.CompareTag("Idol"))
                     {
+                        //save game anywhere before we load a scene
+                        DataPersistanceManager.instance.SaveGame();
                         SceneManager.LoadScene("Cham");
                     }
                     else
                     {
+                        //save game anywhere before we load a scene
+                        DataPersistanceManager.instance.SaveGame();
                         SceneManager.LoadScene("BattleSimulator"); 
                     }
                 }
@@ -67,6 +87,11 @@ public class PlayerController : MonoBehaviour, IDataPersistance
     public void ChangeXP(int amount)
     {
         xp += amount;
+        if (xp >= upgradeXp)
+        {
+            ChangeLevel(1);
+            xp = xp - upgradeXp; 
+        }
     }
 
     //change player training points by a certain amount

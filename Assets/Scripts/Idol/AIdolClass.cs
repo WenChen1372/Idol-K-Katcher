@@ -16,8 +16,6 @@ public class AIdolClass : IdolClass
         Stamina = 200;
         CurStamina = 200;
         IdolTier = 'A';
-        ResetHealth();
-        ResetStamina();
     }
 
     #endregion
