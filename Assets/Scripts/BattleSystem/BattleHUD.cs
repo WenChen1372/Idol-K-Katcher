@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class BattleHUD : MonoBehaviour
 {
@@ -10,18 +11,18 @@ public class BattleHUD : MonoBehaviour
     public Text idolTierText;
     public Slider hpSlider;
     public Slider staminaSlider;
-    public Text aegyoDmg;
-    public Text aegyoCost;
-    public Text singDmg;
-    public Text singCost;
-    public Text danceDmg;
-    public Text danceCost;
+    public TextMeshProUGUI aegyoDmg;
+    public TextMeshProUGUI aegyoCost;
+    public TextMeshProUGUI singDmg;
+    public TextMeshProUGUI singCost;
+    public TextMeshProUGUI danceDmg;
+    public TextMeshProUGUI danceCost;
 
     public Text hpText;
     public Text staminaText;
 
-    public Text specialMoveName;
-    public Text skillDesc;
+    public TextMeshProUGUI specialMoveName;
+    public TextMeshProUGUI skillDesc;
     
     float maxHealth;
     float curHealth;

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Random = System.Random;
+using TMPro;
 
 //enum with all of the states of our game
 public enum BattleState { START, PLAYERTURN, ENEMYTURN, WON, LOST }
@@ -21,7 +22,7 @@ public class BattleSystem : MonoBehaviour
     public BattleState currState; 
 
     //Text of the dialogue
-    public Text dialogue;
+    public TextMeshProUGUI dialogue;
 
 
     //The battleHuds
