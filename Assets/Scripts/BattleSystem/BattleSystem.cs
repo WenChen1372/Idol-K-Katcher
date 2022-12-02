@@ -56,8 +56,17 @@ public class BattleSystem : MonoBehaviour
     bool ourIdolPoison;
     bool enemyIdolPoison;
 
+    bool usedSpecial;
+    bool enemyUsedSpecial;
+
+    //our idol gameobjects
+    GameObject playerIdol;
+    GameObject enemyIdol;
+
     #endregion
 
+
+    #region begin
     // Start is called before the first frame update
     void Start()
     {
@@ -67,6 +76,8 @@ public class BattleSystem : MonoBehaviour
         enemyUsedAegyo = false;
         ourIdolPoison = false;
         enemyIdolPoison = false;
+        usedSpecial = false;
+        enemyUsedSpecial = false;
         StartCoroutine(BeginBattle());
         
     }
@@ -83,10 +94,12 @@ public class BattleSystem : MonoBehaviour
         enemyIdolPrefab = enemyIdol;
     }
 
+
+
     IEnumerator BeginBattle()
     {
         
-        GameObject playerIdol = Instantiate(playerIdolPrefab, new Vector3(-1.1f, 1f, 0f), Quaternion.identity);
+        playerIdol = Instantiate(playerIdolPrefab, new Vector3(-1.1f, 1f, 0f), Quaternion.identity);
 
         Debug.Log(playerIdol == null);
         //might need to change how we get the Idol Classes
@@ -96,7 +109,7 @@ public class BattleSystem : MonoBehaviour
         float damage = attack.getAbilityPower();
         
         
-        GameObject enemyIdol = Instantiate(enemyIdolPrefab, new Vector3(1.1f, 1f, 0f), Quaternion.identity);
+        enemyIdol = Instantiate(enemyIdolPrefab, new Vector3(1.1f, 1f, 0f), Quaternion.identity);
         enemyIdolComp = enemyIdol.GetComponent<IdolClass>();
     
         //name is currently null
@@ -131,6 +144,8 @@ public class BattleSystem : MonoBehaviour
     {
         dialogue.text = "Choose a move";
     }
+
+    #endregion
 
     
 
@@ -193,6 +208,9 @@ public class BattleSystem : MonoBehaviour
 
           else 
           {
+
+            StartCoroutine(movePlayerAttack());
+
             bool isDead = enemyIdolComp.ChangeHealth(damage);
             bool weDead = false;
             enemyHUD.SetHp(enemyIdolComp.CurHealth, enemyIdolComp);
@@ -295,13 +313,32 @@ public class BattleSystem : MonoBehaviour
         if (!enemyUsedAegyo)
         {
             Random number = new Random();
-            attackNum = number.Next(0, 3); 
+            attackNum = number.Next(0, 4);
+
+            if (attackNum == 0)
+            {
+                enemyUsedAegyo = true;
+
+            }
+
+            if (attackNum == 4)
+            {
+                enemyUsedSpecial = true;
+            }
         } 
         
+        else if (!enemyUsedSpecial)
+        {
+            Random number = new Random();
+            attackNum = number.Next(1, 4);
+            enemyUsedSpecial = true; 
+        } 
+
         else
         {
             Random number = new Random();
             attackNum = number.Next(1, 3); 
+
         }
         
         if(attackNum == 0)
@@ -317,11 +354,20 @@ public class BattleSystem : MonoBehaviour
             attackName = "Sing";
         }
 
-        else 
+        else if (attackNum == 2)
 
         {
             attackName = "Dance";
         }
+
+        else
+        {
+            StartCoroutine(enemySpecialMove(enemyIdolName));
+
+            yield break;
+        }
+
+        StartCoroutine(moveEnemyPlayerAttack());
 
 
 
@@ -405,6 +451,8 @@ public class BattleSystem : MonoBehaviour
 
     }
 
+    #region regen
+
     //Regen the health and the Stamina
     public void IdolRegen()
     {
@@ -458,8 +506,62 @@ public class BattleSystem : MonoBehaviour
 
     }
 
+    #endregion 
 
 
+    #region movement
+
+    IEnumerator movePlayerAttack()
+    {
+        playerIdol.transform.position = new Vector3(-0.5f, 1f, 0f);
+
+        enemyIdol.transform.position = new Vector3(1.3f, 1f, 0);
+
+        yield return new WaitForSeconds(1f);
+
+        playerIdol.transform.position = new Vector3(-0.6f, 1f, 0f);
+
+
+        yield return new WaitForSeconds(0.75f);
+
+        playerIdol.transform.position = new Vector3(-0.5f, 1f, 0f);
+
+        yield return new WaitForSeconds(0.75f);
+
+        playerIdol.transform.position = new Vector3(-1.1f, 1f, 0f);
+
+        enemyIdol.transform.position = new Vector3(1.1f, 1f, 0);
+
+        yield break;
+
+    }
+
+    IEnumerator moveEnemyPlayerAttack()
+    {
+        enemyIdol.transform.position = new Vector3(0.6f, 1f, 0f);
+
+        playerIdol.transform.position = new Vector3(-1.3f, 1f, 0);
+
+        yield return new WaitForSeconds(1f);
+
+        enemyIdol.transform.position = new Vector3(0.7f, 1f, 0f);
+
+
+        yield return new WaitForSeconds(0.75f);
+
+        enemyIdol.transform.position = new Vector3(0.6f, 1f, 0f);
+
+        yield return new WaitForSeconds(0.75f);
+
+        playerIdol.transform.position = new Vector3(-1.1f, 1f, 0f);
+
+        enemyIdol.transform.position = new Vector3(1.1f, 1f, 0);
+
+        yield break;
+
+    }
+
+    #endregion
 
     void EndBattle()
     {
@@ -512,7 +614,10 @@ public class BattleSystem : MonoBehaviour
             return;
         }
 
+        
         StartCoroutine(SpecialMove(ourIdolName));
+            
+        
     }
 
     #endregion
@@ -574,9 +679,27 @@ public class BattleSystem : MonoBehaviour
     #region ourSpecialMove
     IEnumerator SpecialMove(string idolName)
     {
+
+        if (usedSpecial)
+        {
+            dialogue.text = "You can only use special once";
+
+            yield return new WaitForSeconds(3f);
+
+            PlayerTurn();
+
+            yield break;
+        }
+
+        usedSpecial = true;
+
         if (idolName == "Jhope")
         {
-            dialogue.text = "Your enemy is blinded, You gain an extra turn";
+            dialogue.text = "As one of the most positive members of BTS";
+
+            yield return new WaitForSeconds(2f);
+
+            dialogue.text = "His bright personality blinds the foe and makes them skip a turn";
 
             yield return new WaitForSeconds(2f);
 
@@ -649,6 +772,8 @@ public class BattleSystem : MonoBehaviour
                 
             }
 
+            currState = BattleState.PLAYERTURN;
+
 
             PlayerTurn();
 
@@ -656,7 +781,11 @@ public class BattleSystem : MonoBehaviour
 
         else if (idolName == "Rm")
         {
-            dialogue.text = "Your Rm gain double healing and stamina regeneration";
+            dialogue.text = "Rm raps so fast, he boosts his health and stamina";
+
+            yield return new WaitForSeconds(2f);
+
+            dialogue.text = "FOR THE REST OF THE BATTLE";
 
             yield return new WaitForSeconds(2f);
 
@@ -730,9 +859,15 @@ public class BattleSystem : MonoBehaviour
 
         else if (idolName == "Suga")
         {
-            dialogue.text = "You took a gamble and have a chance to win";
+            dialogue.text = "Suga's bluntness and honesty is something that could scare brave hearts";
 
             yield return new WaitForSeconds(2f);
+
+            dialogue.text = "Face the deadly stare of Suga and defeat as this ability gives you a percent chance";
+
+            yield return new WaitForSeconds(2f);
+
+            dialogue.text = "TO WIN THE GAME OR LOSE";
 
             bool win = SugaSpecial(ourIdolTier);
 
@@ -1038,6 +1173,506 @@ public class BattleSystem : MonoBehaviour
 
 
     }
+
+    #endregion
+
+    #region enemySpecial
+    IEnumerator enemySpecialMove(string idolName)
+    {
+
+        
+        if (idolName == "Jhope")
+        {
+            dialogue.text = "As one of the most positive members of BTS";
+
+            yield return new WaitForSeconds(3f);
+
+            dialogue.text = "His bright personality blinds the foe and makes them skip a turn";
+
+            yield return new WaitForSeconds(3f);
+
+            float percentage = playerIdolComp.CurStamina * enemyAegyoDrain; //not sure from current stamina or max stamina?
+
+            playerIdolComp.ChangeStamina(percentage);
+            playerHUD.SetStamina(playerIdolComp.CurStamina, playerIdolComp);
+
+            dialogue.text = "You were drained for " + percentage.ToString() + " stamina";
+                
+            yield return new WaitForSeconds(2f);
+
+            bool weDead = false;
+            bool isDead = false;
+
+            if (ourIdolPoison)
+            {
+                weDead = wePoison();
+
+                dialogue.text = "You were poisoned " + enemyBaseRegen.ToString() + " Health and " + enemyBaseRegen.ToString() + " Stamina";
+
+                yield return new WaitForSeconds(2f);
+            }
+
+            if (enemyIdolPoison)
+            {
+                isDead = enemyPoison();
+
+                dialogue.text = "Enemy was poisoned " + ourBaseRegen.ToString() + " Health and " + ourBaseRegen.ToString() + " Stamina";
+
+                yield return new WaitForSeconds(2f);
+            }
+
+            
+            
+            if (isDead)
+            {
+                currState = BattleState.WON;
+                EndBattle();
+            }
+
+            else if (weDead)
+            {
+                currState = BattleState.LOST;
+                EndBattle();
+            }
+            else
+            {
+                currState = BattleState.ENEMYTURN;
+
+                IdolRegen();
+
+                if (!ourIdolPoison)
+                {
+                    dialogue.text = "You healed " + ourBaseRegen.ToString() + " Health and regained " + ourBaseRegen.ToString() + " Stamina";
+
+                    yield return new WaitForSeconds(2f);
+
+                }
+
+                if (!enemyIdolPoison)
+                {
+
+                    dialogue.text = "Enemy healed " + enemyBaseRegen.ToString() + " Health and regained " + enemyBaseRegen.ToString() + " Stamina";
+
+                    yield return new WaitForSeconds(2f);
+
+                }
+
+                
+            }
+
+            currState = BattleState.ENEMYTURN;
+
+
+            StartCoroutine(EnemyTurn());
+
+            yield break; 
+
+        }
+
+        else if (idolName == "Rm")
+        {
+            dialogue.text = "Rm raps so fast, he boosts his health and stamina";
+
+            yield return new WaitForSeconds(2f);
+
+            dialogue.text = "FOR THE REST OF THE BATTLE";
+
+            yield return new WaitForSeconds(2f);
+
+            enemyBaseRegen = enemyBaseRegen * 2;
+
+            bool weDead = false;
+            bool isDead = false;
+
+            if (ourIdolPoison)
+            {
+                weDead = wePoison();
+
+                dialogue.text = "You were poisoned " + enemyBaseRegen.ToString() + " Health and " + enemyBaseRegen.ToString() + " Stamina";
+
+                yield return new WaitForSeconds(2f);
+            }
+
+            if (enemyIdolPoison)
+            {
+                isDead = enemyPoison();
+
+                dialogue.text = "Enemy was poisoned " + ourBaseRegen.ToString() + " Health and " + ourBaseRegen.ToString() + " Stamina";
+
+                yield return new WaitForSeconds(2f);
+            }
+
+            
+            
+            if (isDead)
+            {
+                currState = BattleState.WON;
+                EndBattle();
+            }
+
+            else if (weDead)
+            {
+                currState = BattleState.LOST;
+                EndBattle();
+            }
+            else
+            {
+                currState = BattleState.ENEMYTURN;
+
+                IdolRegen();
+
+                if (!ourIdolPoison)
+                {
+                    dialogue.text = "You healed " + ourBaseRegen.ToString() + " Health and regained " + ourBaseRegen.ToString() + " Stamina";
+
+                    yield return new WaitForSeconds(2f);
+
+                }
+
+                if (!enemyIdolPoison)
+                {
+
+                    dialogue.text = "Enemy healed " + enemyBaseRegen.ToString() + " Health and regained " + enemyBaseRegen.ToString() + " Stamina";
+
+                    yield return new WaitForSeconds(2f);
+
+                }
+
+                
+            }
+
+
+            currState = BattleState.PLAYERTURN;
+
+            PlayerTurn();
+
+            yield break;
+        }
+
+        else if (idolName == "Suga")
+        {
+            dialogue.text = "Suga's bluntness and honesty is something that could scare brave hearts";
+
+            yield return new WaitForSeconds(2f);
+
+            dialogue.text = "Face the deadly stare of Suga and defeat as this ability gives you a percent chance";
+
+            yield return new WaitForSeconds(2f);
+
+            dialogue.text = "TO WIN THE GAME OR LOSE";
+
+            bool win = SugaSpecial(enemyIdolTier);
+
+            if (win)
+            {
+
+                dialogue.text = "ENEMY SUGA GOT LUCKY AND WON";
+
+                yield return new WaitForSeconds(2f);
+
+                currState = BattleState.LOST;
+
+                EndBattle();
+            }
+
+            else
+            {
+
+                dialogue.text = "ENEMY SUGA GOT UNLUCKY AND LOST ";
+
+                yield return new WaitForSeconds(2f);
+
+                currState = BattleState.WON;
+
+                EndBattle();
+            }
+            
+        }
+
+        else if (idolName == "Jk")
+
+        {
+            dialogue.text = "The maknae of BTS uses his youth to restore his health to max health";
+
+            yield return new WaitForSeconds(3f);
+
+            enemyIdolComp.ResetHealth();
+            enemyIdolComp.ResetStamina();
+
+            enemyHUD.SetHp(enemyIdolComp.CurHealth, enemyIdolComp);
+            enemyHUD.SetStamina(enemyIdolComp.CurStamina, enemyIdolComp);
+
+            bool weDead = false;
+            bool isDead = false;
+
+            if (ourIdolPoison)
+            {
+                weDead = wePoison();
+
+                dialogue.text = "You were poisoned " + enemyBaseRegen.ToString() + " Health and " + enemyBaseRegen.ToString() + " Stamina";
+
+                yield return new WaitForSeconds(3f);
+            }
+
+            if (enemyIdolPoison)
+            {
+                isDead = enemyPoison();
+
+                dialogue.text = "Enemy was poisoned " + ourBaseRegen.ToString() + " Health and " + ourBaseRegen.ToString() + " Stamina";
+
+                yield return new WaitForSeconds(3f);
+            }
+
+            
+            
+            if (isDead)
+            {
+                currState = BattleState.WON;
+                EndBattle();
+            }
+
+            else if (weDead)
+            {
+                currState = BattleState.LOST;
+                EndBattle();
+            }
+            else
+            {
+                currState = BattleState.ENEMYTURN;
+
+                IdolRegen();
+
+                if (!ourIdolPoison)
+                {
+                    dialogue.text = "You healed " + ourBaseRegen.ToString() + " Health and regained " + ourBaseRegen.ToString() + " Stamina";
+
+                    yield return new WaitForSeconds(2f);
+
+                }
+
+                if (!enemyIdolPoison)
+                {
+
+                    dialogue.text = "Enemy healed " + enemyBaseRegen.ToString() + " Health and regained " + enemyBaseRegen.ToString() + " Stamina";
+
+                    yield return new WaitForSeconds(2f);
+
+                }
+
+                
+            }
+
+    
+
+            currState = BattleState.PLAYERTURN;
+
+            PlayerTurn();
+
+            yield break;
+        }
+
+        else if (idolName == "Jin")
+
+        {
+            dialogue.text = "Jin can be super witty and corny at times with his cringe dad jokes";
+
+            yield return new WaitForSeconds(2f);
+
+            dialogue.text = "So as the joker of the group, he swutches stats with his opponent";
+
+            yield return new WaitForSeconds(2f);
+
+            JinSpecial();
+
+            playerHUD.SetHp(playerIdolComp.CurHealth, playerIdolComp);
+            playerHUD.SetStamina(playerIdolComp.CurStamina, playerIdolComp);
+
+            enemyHUD.SetHp(enemyIdolComp.CurHealth, enemyIdolComp);
+            enemyHUD.SetStamina(enemyIdolComp.CurStamina, enemyIdolComp);
+
+            bool weDead = false;
+            bool isDead = false;
+
+            if (ourIdolPoison)
+            {
+                weDead = wePoison();
+
+                dialogue.text = "You were poisoned " + enemyBaseRegen.ToString() + " Health and " + enemyBaseRegen.ToString() + " Stamina";
+
+                yield return new WaitForSeconds(2f);
+            }
+
+            if (enemyIdolPoison)
+            {
+                isDead = enemyPoison();
+
+                dialogue.text = "Enemy was poisoned " + ourBaseRegen.ToString() + " Health and " + ourBaseRegen.ToString() + " Stamina";
+
+                yield return new WaitForSeconds(2f);
+            }
+
+            
+            
+            if (isDead)
+            {
+                currState = BattleState.WON;
+                EndBattle();
+            }
+
+            else if (weDead)
+            {
+                currState = BattleState.LOST;
+                EndBattle();
+            }
+            else
+            {
+                currState = BattleState.ENEMYTURN;
+
+                IdolRegen();
+
+                if (!ourIdolPoison)
+                {
+                    dialogue.text = "You healed " + ourBaseRegen.ToString() + " Health and regained " + ourBaseRegen.ToString() + " Stamina";
+
+                    yield return new WaitForSeconds(2f);
+
+                }
+
+                if (!enemyIdolPoison)
+                {
+
+                    dialogue.text = "Enemy healed " + enemyBaseRegen.ToString() + " Health and regained " + enemyBaseRegen.ToString() + " Stamina";
+
+                    yield return new WaitForSeconds(2f);
+
+                }
+
+                
+            }
+
+        
+
+            currState = BattleState.PLAYERTURN;
+
+            PlayerTurn();
+
+            yield break;
+
+
+        } 
+        
+        else if (idolName == "Jimin")
+
+        {
+            dialogue.text = "As one of the best looking members, his looks charm his opponents";
+
+            yield return new WaitForSeconds(2f);
+
+            dialogue.text = "making them give give their special ability to Jimin";
+
+            yield return new WaitForSeconds(2f);
+
+            dialogue.text = "Jimin is now " + enemyIdolName.ToString() + " and uses his ability";
+
+            yield return new WaitForSeconds(2f);
+
+
+            StartCoroutine(enemySpecialMove(ourIdolName));
+
+        }
+
+        else if (idolName == "V")
+
+        {
+            dialogue.text = "Being part of so many dating scandals";
+
+            yield return new WaitForSeconds(2f);
+
+            dialogue.text = "V uses the toxic publicity to poison his enemy by reducing health and stamina";
+
+            yield return new WaitForSeconds(2f);
+
+            dialogue.text = "For the rest of the battle";
+
+            yield return new WaitForSeconds(1f);
+
+            ourIdolPoison = true;
+            bool weDead = false;
+            bool isDead = false;
+
+            if (ourIdolPoison)
+            {
+                weDead = wePoison();
+
+                dialogue.text = "You were poisoned " + enemyBaseRegen.ToString() + " Health and " + enemyBaseRegen.ToString() + " Stamina";
+
+                yield return new WaitForSeconds(2f);
+            }
+
+            if (enemyIdolPoison)
+            {
+                isDead = enemyPoison();
+
+                dialogue.text = "Enemy was poisoned " + ourBaseRegen.ToString() + " Health and " + ourBaseRegen.ToString() + " Stamina";
+
+                yield return new WaitForSeconds(2f);
+            }
+
+            
+            
+            if (isDead)
+            {
+                currState = BattleState.WON;
+                EndBattle();
+            }
+
+            else if (weDead)
+            {
+                currState = BattleState.LOST;
+                EndBattle();
+            }
+            else
+            {
+                currState = BattleState.ENEMYTURN;
+
+                IdolRegen();
+
+                if (!ourIdolPoison)
+                {
+                    dialogue.text = "You healed " + ourBaseRegen.ToString() + " Health and regained " + ourBaseRegen.ToString() + " Stamina";
+
+                    yield return new WaitForSeconds(2f);
+
+                }
+
+                if (!enemyIdolPoison)
+                {
+
+                    dialogue.text = "Enemy healed " + enemyBaseRegen.ToString() + " Health and regained " + enemyBaseRegen.ToString() + " Stamina";
+
+                    yield return new WaitForSeconds(2f);
+
+                }
+
+                
+            }
+
+            currState = BattleState.PLAYERTURN;
+
+            PlayerTurn();
+
+            yield break;
+
+
+
+
+
+        }
+
+
+
+    }
+
 
     #endregion
 

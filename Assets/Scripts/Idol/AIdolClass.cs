@@ -16,6 +16,7 @@ public class AIdolClass : IdolClass
         Stamina = 200;
         CurStamina = 200;
         IdolTier = 'A';
+        Count = 0;
     }
 
     #endregion

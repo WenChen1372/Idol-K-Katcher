@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1780987547078400196}
   - component: {fileID: 2532607361120273840}
   - component: {fileID: 2395266125753666434}
+  - component: {fileID: -6542340063924315729}
   m_Layer: 0
   m_Name: SUGA.S.IDLE
   m_TagString: IdolBattle
@@ -110,6 +111,9 @@ MonoBehaviour:
   - abilityName: Sing
     abilityPower: 180
     abilityCost: 90
+  - abilityName: Death Stare
+    abilityPower: 180
+    abilityCost: 90
 --- !u!65 &2395266125753666434
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -123,3 +127,23 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 7.162216, y: 10.8, z: 0.2}
   m_Center: {x: -0.18943405, y: 0, z: 0}
+--- !u!95 &-6542340063924315729
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8915003992387983217}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1c490736c120846998085111a4237d98, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
