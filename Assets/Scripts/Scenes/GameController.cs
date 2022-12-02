@@ -54,5 +54,10 @@ public class GameController : MonoBehaviour
         //DataPersistanceManager.instance.SaveGame();
         SceneManager.LoadSceneAsync("MainMenu"); 
     }
+
+    public void LoadTutorial()
+    {
+        SceneManager.LoadSceneAsync("Tutorial");
+    }
     #endregion 
 }

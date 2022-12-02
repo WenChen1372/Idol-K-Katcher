@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5019388194117575515}
   - component: {fileID: 4456109501322242960}
   - component: {fileID: 7221472508622193946}
+  - component: {fileID: 3684294229532828981}
   m_Layer: 0
   m_Name: JK.B.IDLE
   m_TagString: Idol
@@ -123,3 +124,23 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 7.347412, y: 10.8, z: 0.2}
   m_Center: {x: -0.09683609, y: 0, z: 0}
+--- !u!95 &3684294229532828981
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6832834593640049195}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f614d7ae2518440929b361518e77e604, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6921855501304600477}
   - component: {fileID: 5173784167713980806}
   - component: {fileID: 9206276433230612281}
+  - component: {fileID: 40753273190930142}
   m_Layer: 0
   m_Name: SUGA.B.IDLE
   m_TagString: Idol
@@ -123,3 +124,23 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 7.62521, y: 10.8, z: 0.2}
   m_Center: {x: 0.22810936, y: 0.18604565, z: 0}
+--- !u!95 &40753273190930142
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2863604477266179884}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c1cd1f185197a46e9a544f89b467ed1c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
