@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1266894187507659714}
   - component: {fileID: 1365119730173838337}
   - component: {fileID: 5083951628321460385}
+  - component: {fileID: 8033238893920875564}
   m_Layer: 0
   m_Name: V.A.IDLE
   m_TagString: Idol
@@ -123,3 +124,23 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 7.162216, y: 10.8, z: 0.2}
   m_Center: {x: -0.25144958, y: 0.18604565, z: 0}
+--- !u!95 &8033238893920875564
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6537578802746451416}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: eb5ed6f955b934cca81d65fd40050046, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
