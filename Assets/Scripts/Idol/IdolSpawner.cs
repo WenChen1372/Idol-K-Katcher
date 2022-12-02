@@ -92,7 +92,7 @@ public class IdolSpawner : MonoBehaviour
     private void Start()
     {
         StartCoroutine(SpawnIdols());
-        StartCoroutine(SpawnTour());
+        //StartCoroutine(SpawnTour());
         StartCoroutine(SpawnBattle());
 
     }
