@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 1980407888524976073}
   - component: {fileID: 6225531774829172171}
   - component: {fileID: 9057988625199705857}
+  - component: {fileID: -7647769474754470495}
+  - component: {fileID: 6028564510125396311}
   m_Layer: 0
   m_Name: JIN.B.IDLE
   m_TagString: IdolBattle
@@ -110,6 +112,9 @@ MonoBehaviour:
   - abilityName: Sing
     abilityPower: 80
     abilityCost: 40
+  - abilityName: The Joker
+    abilityPower: 0
+    abilityCost: 0
 --- !u!65 &9057988625199705857
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -123,3 +128,45 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 7.44001, y: 10.8, z: 0.2}
   m_Center: {x: 0.13550949, y: 0.18604565, z: 0}
+--- !u!114 &-7647769474754470495
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6574721912056544891}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0f86fbeee94944ffb54128800a7d213, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerChoiceHandlerAnimation: {fileID: 0}
+  choiceAnimation: {fileID: 0}
+  reactionTime: 0
+  trueTimer: 0
+  maxTime: 0
+  stillGoing: 1
+  left: {fileID: 0}
+  right: {fileID: 0}
+  down: {fileID: 0}
+  up: {fileID: 0}
+--- !u!95 &6028564510125396311
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6574721912056544891}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1d43217dc16b54fe696ef963a3cf4f0d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

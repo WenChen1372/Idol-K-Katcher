@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 552131702170061504}
   - component: {fileID: 3460269514134463730}
   - component: {fileID: 8862315794785506007}
+  - component: {fileID: -3555409499251522191}
   m_Layer: 0
   m_Name: JHOPE.A.IDLE
   m_TagString: IdolBattle
@@ -123,3 +124,26 @@ MonoBehaviour:
   - abilityName: Sing
     abilityPower: 140
     abilityCost: 70
+  - abilityName: Ray of Sunshine
+    abilityPower: 0
+    abilityCost: 0
+--- !u!95 &-3555409499251522191
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2717919027026268615}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: bdb36493e6003452696e539861e8d242, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

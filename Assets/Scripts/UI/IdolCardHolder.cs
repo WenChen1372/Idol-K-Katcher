@@ -9,13 +9,25 @@ public class IdolCardHolder : MonoBehaviour
 
 
     //public int itemID;
-	public GameObject idolCount;
-	public Image idolImage;
+	public Text idolCount;
+	public Image idolCard;
+    public Image idolAnimation;
+
 
     
-    public void setImage(Sprite card)
+    public void setCard(Sprite card)
     {
-        idolImage.sprite = card;
+        idolCard.sprite = card;
+    }
+
+    public void setAnimation(Sprite idol)
+    {
+        idolAnimation.sprite = idol;
+    }
+
+    public void setCount(int count)
+    {
+        idolCount.text = count.ToString();
     }
 
 

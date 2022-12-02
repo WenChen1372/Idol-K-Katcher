@@ -40,17 +40,27 @@ public class Inventory : MonoBehaviour
 
                 IdolClass idolClass = idol.GetComponent<IdolClass>();
 
+
+
         
 
                 //get the photo
 
                 Sprite photocard = idolClass.getPhotoCard();
 
+                Sprite animation = idol.GetComponent<SpriteRenderer>().sprite;
+
 
                 IdolCardHolder holderScript = cardHolder.GetComponent<IdolCardHolder>();
 
 
-                holderScript.setImage(photocard);
+                holderScript.setCard(photocard);
+
+                holderScript.setAnimation(animation);
+
+                holderScript.setCount(idolClass.Count);
+
+                
 
 
 
