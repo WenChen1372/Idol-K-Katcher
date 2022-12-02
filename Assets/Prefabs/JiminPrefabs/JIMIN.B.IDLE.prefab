@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3716543692230255662}
   - component: {fileID: 5138524957007505129}
   - component: {fileID: 455363738455669016}
+  - component: {fileID: -5962376424492647617}
   m_Layer: 0
   m_Name: JIMIN.B.IDLE
   m_TagString: Idol
@@ -99,7 +100,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   idolPhotoCard: {fileID: 21300000, guid: ab12f40a87f3ea04b96ce9f8ba199c8c, type: 3}
-  idolGameObject: {fileID: 0}
   idolName: Jimin
   idolAbilities:
   - abilityName: Aegyo
@@ -124,3 +124,23 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 7.162217, y: 10.8, z: 0.2}
   m_Center: {x: -0.003387928, y: 0.18604565, z: 0}
+--- !u!95 &-5962376424492647617
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6972885272510166815}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 387889d3004ac440da12550a3549d2ab, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

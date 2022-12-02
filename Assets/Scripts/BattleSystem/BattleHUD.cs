@@ -19,6 +19,9 @@ public class BattleHUD : MonoBehaviour
 
     public Text hpText;
     public Text staminaText;
+
+    public Text specialMoveName;
+    public Text skillDesc;
     
     float maxHealth;
     float curHealth;
@@ -46,6 +49,10 @@ public class BattleHUD : MonoBehaviour
         singCost.text = "Mana: " + save[1].getAbilityCost().ToString();
         danceDmg.text = "DMG: " + save[2].getAbilityPower().ToString();
         danceCost.text = "Mana: " + save[2].getAbilityCost().ToString();
+
+        specialMoveName.text = save[3].getAbilityName();
+        setSkillDesc(idol);
+
         hpText.text = curHealth.ToString() + "/" + maxHealth.ToString();
         staminaText.text = curStamina.ToString() + "/" + maxStamina.ToString();
     }
@@ -63,6 +70,66 @@ public class BattleHUD : MonoBehaviour
     {
         staminaSlider.value = stamina;
         staminaText.text = idol.CurStamina.ToString() + "/" + idol.Stamina.ToString();
+    }
+
+    public void setSkillDesc(IdolClass idol)
+    {
+        string name = idol.getIdolName();
+        char tier = idol.IdolTier;
+
+        if (name == "Rm")
+        {
+            skillDesc.text = "Regeneration ability";
+        }
+
+        else if (name == "V")
+        {
+            skillDesc.text = "Poison Enemy";
+        }
+
+        else if (name == "Jhope")
+        {
+            skillDesc.text = "Enemy turn Skip";
+        }
+
+        else if (name == "Suga")
+        {
+            if(tier == 'C')
+            {
+                skillDesc.text = "10% chance to win";
+            }
+
+            else if (tier == 'B')
+            {
+                skillDesc.text = "20% chance to win";
+            }
+
+            else if (tier == 'A')
+            {
+                skillDesc.text = "30% chance to win";
+            }
+
+            else if (tier == 'S')
+            {
+                skillDesc.text = "40% chance to win";
+            }
+        }
+
+        else if (name == "Jimin")
+        {
+            skillDesc.text = "Use opponent Special";
+        }
+
+        else if (name == "Jk")
+        {
+            skillDesc.text = "Get Max HP and Stamina";
+        }
+
+        else if (name == "Jin")
+        {
+            skillDesc.text = "Swap Health with Opponent";
+        }
+        
     }
 
 

@@ -61,13 +61,13 @@ public class PlayerController : MonoBehaviour, IDataPersistance
                     if (other.CompareTag("Idol"))
                     {
                         //save game anywhere before we load a scene
-                        DataPersistanceManager.instance.SaveGame();
+                        //DataPersistanceManager.instance.SaveGame();
                         SceneManager.LoadScene("Cham");
                     }
                     else
                     {
                         //save game anywhere before we load a scene
-                        DataPersistanceManager.instance.SaveGame();
+                        //DataPersistanceManager.instance.SaveGame();
                         SceneManager.LoadScene("BattleSimulator"); 
                     }
                 }

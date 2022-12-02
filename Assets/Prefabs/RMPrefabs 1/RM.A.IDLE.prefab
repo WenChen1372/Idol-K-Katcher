@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1666904344490662253}
   - component: {fileID: 1762959299832903929}
   - component: {fileID: 244003082264075826}
+  - component: {fileID: 8304561891735850268}
   m_Layer: 0
   m_Name: RM.A.IDLE
   m_TagString: IdolBattle
@@ -110,6 +111,9 @@ MonoBehaviour:
   - abilityName: Sing
     abilityPower: 140
     abilityCost: 70
+  - abilityName: Rap God
+    abilityPower: 0
+    abilityCost: 0
 --- !u!65 &244003082264075826
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -123,3 +127,23 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 7.069622, y: 10.8, z: 0.2}
   m_Center: {x: -0.11170006, y: 0.062015533, z: 0}
+--- !u!95 &8304561891735850268
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3070648691982557760}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ae6c614cdc50247a28b7e986815a5b97, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
