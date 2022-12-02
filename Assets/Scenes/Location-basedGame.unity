@@ -291,17 +291,17 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: (points)
+  m_text: 5000
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 9d136065b75a1864bb1374a07c17ae91, type: 2}
-  m_sharedMaterial: {fileID: 4125368920386784853, guid: 9d136065b75a1864bb1374a07c17ae91, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4294924799
+  m_fontColor: {r: 1, g: 0.34901962, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -324,7 +324,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
@@ -524,13 +524,13 @@ MonoBehaviour:
   - {fileID: 8915003992387983217, guid: cb901ade4266b0f4e96e77d65bd824f5, type: 3}
   - {fileID: 90997017020499086, guid: bca57660b451c5840a0962eea29e033c, type: 3}
   m_TourStopObject: {fileID: 6050719714022478488, guid: 02c4b47785df152499f240fb3a1b0019, type: 3}
-  m_BattleObject: {fileID: 1580904005749296347, guid: f95a57906515c304c9872f2c03d46a7e, type: 3}
+  m_BattleObject: {fileID: 3670908133621596847, guid: 843f6d79b0a9d8045b580d1bd29d1084, type: 3}
   m_PlayerTransform: {fileID: 1090378090}
   m_ProbabilityC: 0.25
   m_ProbabilityB: 0.25
   m_ProbabilityA: 0.25
   m_ProbabilityS: 0.25
-  m_ProbabilityTourStop: 1
+  m_ProbabilityTourStop: 0
   m_ProbabilityBattle: 1
   m_MinRange: 5
   m_MaxRange: 30
@@ -604,7 +604,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.1254902, g: 0.1254902, b: 0.1254902, a: 1}
+  m_Color: {r: 1, g: 0.34901962, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1214,17 +1214,17 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Level (level)
+  m_text: Level 14
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 9d136065b75a1864bb1374a07c17ae91, type: 2}
-  m_sharedMaterial: {fileID: 4125368920386784853, guid: 9d136065b75a1864bb1374a07c17ae91, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4294924799
+  m_fontColor: {r: 1, g: 0.34901962, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1247,7 +1247,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
@@ -1693,7 +1693,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1000
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 573
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []

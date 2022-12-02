@@ -62,13 +62,13 @@ public class PlayerController : MonoBehaviour, IDataPersistance
                     {
                         //save game anywhere before we load a scene
                         //DataPersistanceManager.instance.SaveGame();
-                        SceneManager.LoadScene("Cham");
+                        SceneManager.LoadSceneAsync("Cham");
                     }
                     else
                     {
                         //save game anywhere before we load a scene
                         //DataPersistanceManager.instance.SaveGame();
-                        SceneManager.LoadScene("BattleSimulator"); 
+                        SceneManager.LoadSceneAsync("BattleSimulator"); 
                     }
                 }
             }
