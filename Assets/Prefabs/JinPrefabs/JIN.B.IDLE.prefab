@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1980407888524976073}
   - component: {fileID: 6225531774829172171}
   - component: {fileID: 9057988625199705857}
+  - component: {fileID: -4394040316485329135}
   m_Layer: 0
   m_Name: JIN.B.IDLE
   m_TagString: Idol
@@ -99,7 +100,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   idolPhotoCard: {fileID: 21300000, guid: 354b54eb7a2034745ba5ef4bcd2f63f4, type: 3}
-  idolGameObject: {fileID: 0}
   idolName: Jin
   idolAbilities:
   - abilityName: Aegyo
@@ -124,3 +124,23 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 7.44001, y: 10.8, z: 0.2}
   m_Center: {x: 0.13550949, y: 0.18604565, z: 0}
+--- !u!95 &-4394040316485329135
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6574721912056544891}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1d43217dc16b54fe696ef963a3cf4f0d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

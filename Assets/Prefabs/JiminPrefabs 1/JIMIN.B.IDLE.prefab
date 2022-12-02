@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3716543692230255662}
   - component: {fileID: 5138524957007505129}
   - component: {fileID: 455363738455669016}
+  - component: {fileID: 792521560535849604}
   m_Layer: 0
   m_Name: JIMIN.B.IDLE
   m_TagString: IdolBattle
@@ -110,6 +111,9 @@ MonoBehaviour:
   - abilityName: Sing
     abilityPower: 80
     abilityCost: 40
+  - abilityName: Pretty Boy
+    abilityPower: 0
+    abilityCost: 0
 --- !u!65 &455363738455669016
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -123,3 +127,23 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 7.162217, y: 10.8, z: 0.2}
   m_Center: {x: -0.003387928, y: 0.18604565, z: 0}
+--- !u!95 &792521560535849604
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6972885272510166815}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: da0e2ebfe15cc4574b65f1dfe930d091, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

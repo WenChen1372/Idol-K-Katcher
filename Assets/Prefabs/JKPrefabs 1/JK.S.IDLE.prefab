@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 250062517809471793}
   - component: {fileID: 7545677946173301162}
   - component: {fileID: 4874244315697356749}
+  - component: {fileID: -3221784659997598748}
   m_Layer: 0
   m_Name: JK.S.IDLE
   m_TagString: IdolBattle
@@ -110,6 +111,9 @@ MonoBehaviour:
   - abilityName: Sing
     abilityPower: 180
     abilityCost: 90
+  - abilityName: Fountain of Youth
+    abilityPower: 0
+    abilityCost: 0
 --- !u!65 &4874244315697356749
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -123,3 +127,23 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 6.8844223, y: 10.8, z: 0.2}
   m_Center: {x: -0.20429993, y: 0.062015533, z: 0}
+--- !u!95 &-3221784659997598748
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7225937675354755583}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: af7cf8433831d4710b7e6cdf13ecfc7b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
