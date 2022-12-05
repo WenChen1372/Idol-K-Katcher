@@ -8,12 +8,14 @@ using TMPro;
 //enum with all of the states of our game
 public enum BattleState { START, PLAYERTURN, ENEMYTURN, WON, LOST }
 
-public class BattleSystem : MonoBehaviour
+public class BattleSystem : MonoBehaviour, IDataPersistance
 {
 
     #region Variables
 
     public GameObject playerIdolPrefab;
+    //object im saving
+    //*********************************
     public GameObject enemyIdolPrefab;
 
     public Transform playerIdolSpawn;
@@ -64,9 +66,51 @@ public class BattleSystem : MonoBehaviour
     GameObject playerIdol;
     GameObject enemyIdol;
 
+    //temp idol xp variable
+    private int tempXP;
+
+    //temp idol training points variable
+    private int tempTrainingPoints;
+
+    //temp idol tier variable
+    private char tempTier;
+
+    //temp idol name variable
+    private string tempName;
+
+    //temp prefabIdol dictionary
+    private Dictionary<string, GameObject> tempPrefabIdol;
+
+    //temp inventoryCount dictionary 
+    private Dictionary<string, int> tempInventoryCount; 
+
     #endregion
 
+    #region IDataPersistance Methods
+    //in implementing script, just assign variables you want to data.(variable) value
+    public void LoadData(GameData data)
+    {
+        enemyIdolPrefab = data.playerCurIdol;
+        tempTrainingPoints = data.playerTrainingPoints;
+        tempXP = data.playerXP;
+        tempTier = data.playerCurTier;
+        tempName = data.playerCurName;
+        tempPrefabIdol = data.playerPrefabIdols;
+        tempInventoryCount = data.playerInventoryCount; 
+    }
 
+    //in implementing script, just assign data.(variable) to variable value you want 
+    public void SaveData(GameData data)
+    {
+        data.playerXP = tempXP;
+        data.playerTrainingPoints = tempTrainingPoints;
+        data.playerCurIdol = enemyIdolPrefab;
+        data.playerCurTier = tempTier;
+        data.playerCurName = tempName;
+        data.playerPrefabIdols = tempPrefabIdol;
+        data.playerInventoryCount = tempInventoryCount; 
+    }
+    #endregion 
     #region begin
     // Start is called before the first frame update
     void Start()
@@ -311,7 +355,7 @@ public class BattleSystem : MonoBehaviour
 
         string attackName = "";
         int attackNum;
-        if (!enemyUsedAegyo)
+        if (!enemyUsedAegyo && !enemyUsedSpecial)
         {
             Random number = new Random();
             attackNum = number.Next(0, 4);
@@ -322,18 +366,33 @@ public class BattleSystem : MonoBehaviour
 
             }
 
-            if (attackNum == 4)
+            if (attackNum == 3)
             {
                 enemyUsedSpecial = true;
             }
         } 
         
-        else if (!enemyUsedSpecial)
+        else if (!enemyUsedSpecial && enemyUsedAegyo)
         {
             Random number = new Random();
             attackNum = number.Next(1, 4);
-            enemyUsedSpecial = true; 
-        } 
+            enemyUsedSpecial = true;
+            if (attackNum == 3)
+            {
+                enemyUsedSpecial = true;
+            }
+        }
+
+        else if (enemyUsedSpecial && !enemyUsedAegyo)
+        {
+            Random number = new Random();
+            attackNum = number.Next(1, 4);
+            enemyUsedSpecial = true;
+            if (attackNum == 0)
+            {
+                enemyUsedAegyo = true;
+            }
+        }
 
         else
         {
@@ -569,10 +628,37 @@ public class BattleSystem : MonoBehaviour
         if (currState == BattleState.WON)
         {
             dialogue.text = "You're just better";
+            //add xp and training
+            if (tempTier == 'S')
+            {
+                tempTrainingPoints += 4000;
+                tempXP += 400;
+                tempInventoryCount[tempName + tempTier] += 1; 
+            } 
+            else if (tempTier == 'A')
+            {
+                tempTrainingPoints += 3000;
+                tempXP += 300;
+                tempInventoryCount[tempName + tempTier] += 1;
+            } 
+            else if (tempTier == 'B')
+            {
+                tempTrainingPoints += 2000;
+                tempXP += 200;
+                tempInventoryCount[tempName + tempTier] += 1;
+            } 
+            else
+            {
+                tempTrainingPoints += 1000;
+                tempXP += 100;
+                tempInventoryCount[tempName + tempTier] += 1;
+            }
+            //load winning scene
         }
         else if (currState == BattleState.LOST)
         {
             dialogue.text = "Get GOOD";
+            //load scene
         }
     }
 

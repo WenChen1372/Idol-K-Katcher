@@ -1,10 +1,36 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement; 
+using UnityEngine.SceneManagement;
+using System.Linq; 
 
 public class PlayerController : MonoBehaviour, IDataPersistance
 {
+    #region Inspector Variables
+    [SerializeField]
+    [Tooltip("dictionary of idols with (key) idolName+Tier and (value) prefab1")]
+    private Dictionary<string, GameObject> prefabIdols = new Dictionary<string, GameObject>();
+
+    [SerializeField]
+    [Tooltip("dictionary of idols with (key) idolName+Tier and (value) count for inventory")]
+    private Dictionary<string, int> inventoryCount = new Dictionary<string, int>();
+
+    [SerializeField]
+    [Tooltip("list of key names for dictionary")]
+    private string[] nameArray;
+
+    [SerializeField]
+    [Tooltip("list of prefab1 for dictionary")]
+    private GameObject[] prefabArray; 
+
+    [SerializeField]
+    [Tooltip("player xp amount to level up")]
+    private int upgradeXp;
+    public int UpgradeXp
+    {
+        get; 
+    }
+    #endregion 
     #region Private Variables
     //player level
     private int level; 
@@ -27,23 +53,31 @@ public class PlayerController : MonoBehaviour, IDataPersistance
         get;
     }
 
-    //player xp amount to level up
-    private int upgradeXp; 
-    public int UpgradeXp
+    //current idol being catched or battled
+    private GameObject curIdol;
+    public GameObject CurIdol
     {
         get; 
     }
 
-    //struct containing 2 values to keep track of idol object for "Cham" and "Battle" 
-    //1.)idol as game object
-    //2.)which mode as title of scene
-    public struct currIdol
+    //curent tier of idol being catched or battled
+    private char curTier; 
+    public char CurTier
     {
-        IdolClass idol;
-        string sceneName; 
+        get; 
+    }
+
+    //current name of idol being cathced or battled
+    private string curName; 
+    public string CurName
+    {
+        get; 
     }
     #endregion
 
+    #region 
+
+    #endregion 
     #region Trigger Methods
     void OnTriggerStay(Collider other)
     {
@@ -60,15 +94,24 @@ public class PlayerController : MonoBehaviour, IDataPersistance
                 {
                     if (other.CompareTag("Idol"))
                     {
+                        curIdol = other.gameObject;
+                        curTier = other.gameObject.GetComponent<IdolClass>().IdolTier;
+                        curName = other.gameObject.GetComponent<IdolClass>().IdolName;
                         //save game anywhere before we load a scene
                         //DataPersistanceManager.instance.SaveGame();
                         SceneManager.LoadSceneAsync("Cham");
                     }
                     else
                     {
+                        Debug.Log("reach statment");
+                        curIdol = RandomIdol();
+                        Debug.Log(curIdol);
+                        curTier = curIdol.GetComponent<IdolClass>().IdolTier;
+                        curName = curIdol.GetComponent<IdolClass>().IdolName;
                         //save game anywhere before we load a scene
-                        //DataPersistanceManager.instance.SaveGame();
-                        SceneManager.LoadSceneAsync("BattleSimulator"); 
+                        DataPersistanceManager.instance.SaveGame();
+                        SceneManager.LoadSceneAsync("BattleSimulator");
+
                     }
                 }
             }
@@ -86,11 +129,11 @@ public class PlayerController : MonoBehaviour, IDataPersistance
     //change player xp by a certain amount
     public void ChangeXP(int amount)
     {
-        xp += amount;
+        xp = amount;
         if (xp >= upgradeXp)
         {
-            ChangeLevel(1);
-            xp = xp - upgradeXp; 
+            ChangeLevel(xp / upgradeXp);
+            xp = xp % upgradeXp; 
         }
     }
 
@@ -106,14 +149,75 @@ public class PlayerController : MonoBehaviour, IDataPersistance
     {
         level = data.playerLevel;
         xp = data.playerXP;
-        trainingPoints = data.playerTrainingPoints; 
+        trainingPoints = data.playerTrainingPoints;
+        curIdol = data.playerCurIdol;
+        curTier = data.playerCurTier;
+        curName = data.playerCurName;
+        //This is to account for the first ever load, if we create a new game dictionaries length = 0
+        //in this case we set up the dictionaries with helper methods
+        //If dictionaries from game data is not 0, theres stuff, then load it in
+        Debug.Log(nameArray[0]);
+        if (data.playerPrefabIdols.Count != 0)
+        {
+            prefabIdols = data.playerPrefabIdols;
+        }
+        else
+        {
+            Debug.Log("this is else statement");
+            SetPrefabDictionary();
+            Debug.Log(prefabIdols);
+        }
+        if (data.playerInventoryCount.Count != 0)
+        {
+            inventoryCount = data.playerInventoryCount;
+        } 
+        else
+        {
+            SetInventoryDictionary();
+        }
     }
 
     public void SaveData(GameData data)
     {
         data.playerLevel = level;
         data.playerXP = xp;
-        data.playerTrainingPoints = trainingPoints; 
+        data.playerTrainingPoints = trainingPoints;
+        data.playerCurIdol = curIdol;
+        data.playerCurTier = curTier;
+        data.playerCurName = curName;
+        data.playerPrefabIdols = prefabIdols;
+        data.playerInventoryCount = inventoryCount; 
+    }
+    #endregion
+
+    #region Random Idol Methods
+    private GameObject RandomIdol()
+    {
+        //for showcase, you have equal chance to battle anyone
+        //for future implementations, change percentage chances
+        int idolNum = Random.Range(0, prefabIdols.Count - 1);
+        return prefabIdols.ElementAt(idolNum).Value; 
+    }
+    #endregion
+
+    #region Helper Methods
+    private void SetPrefabDictionary()
+    {
+        Debug.Log(nameArray.Length);
+        for (int i = 0; i < nameArray.Length; i++)
+        {
+            Debug.Log("adding to dictionary");
+            prefabIdols.Add(nameArray[i], prefabArray[i]);
+            Debug.Log(prefabIdols.Count);
+        }
+    }
+
+    private void SetInventoryDictionary()
+    {
+        for (int i = 0; i < nameArray.Length; i++)
+        {
+            inventoryCount.Add(nameArray[i], 0);
+        }
     }
     #endregion 
 }
