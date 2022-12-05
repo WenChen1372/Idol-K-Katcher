@@ -3,13 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Inventory : MonoBehaviour
+public class SelectIdolInventory : MonoBehaviour
 {
-
-
-
-
-    
     public List<GameObject> cardList;
 
     public GameObject cardHolderPrefab;
@@ -50,12 +45,12 @@ public class Inventory : MonoBehaviour
                 Sprite animation = idol.GetComponent<SpriteRenderer>().sprite;
 
 
-                IdolCardHolder holderScript = cardHolder.GetComponent<IdolCardHolder>();
+                SelectIdolButton holderScript = cardHolder.GetComponent<SelectIdolButton>();
                 
 
                 holderScript.setCard(photocard);
 
-                holderScript.setAnimation(animation, idolAnimation, idolClass.IdolTier);
+                holderScript.setAnimation(idolAnimation, idolClass.IdolTier);
 
                 holderScript.setCount(idolClass.Count);
 
@@ -66,11 +61,5 @@ public class Inventory : MonoBehaviour
             }
 
     
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

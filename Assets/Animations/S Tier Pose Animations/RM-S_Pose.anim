@@ -37,6 +37,25 @@ AnimationClip:
     path: 
     classID: 212
     script: {fileID: 0}
+  - curve:
+    - time: 0
+      value: {fileID: 21300000, guid: 4a4374266f7924272a262cac475c1402, type: 3}
+    - time: 0.25
+      value: {fileID: 21300000, guid: 362b1a6e8a17c4247b0771713776cb56, type: 3}
+    - time: 0.5
+      value: {fileID: 21300000, guid: 1a92f9a15dac749ea9a3b9efcb954f22, type: 3}
+    - time: 0.75
+      value: {fileID: 21300000, guid: a82c4f4b7017d4e3c81f9437b1909c31, type: 3}
+    - time: 1
+      value: {fileID: 21300000, guid: 83334adc7146347c1b98232d75a7b59f, type: 3}
+    - time: 1.25
+      value: {fileID: 21300000, guid: caa1009832b514101a25114416fab7a0, type: 3}
+    - time: 1.5
+      value: {fileID: 21300000, guid: 805e808fafb544b26817637d7209d945, type: 3}
+    attribute: m_Sprite
+    path: 
+    classID: 114
+    script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_SampleRate: 60
   m_WrapMode: 0
   m_Bounds:
@@ -51,7 +70,21 @@ AnimationClip:
       typeID: 212
       customType: 23
       isPPtrCurve: 1
+    - serializedVersion: 2
+      path: 0
+      attribute: 2015549526
+      script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+      typeID: 114
+      customType: 0
+      isPPtrCurve: 1
     pptrCurveMapping:
+    - {fileID: 21300000, guid: 4a4374266f7924272a262cac475c1402, type: 3}
+    - {fileID: 21300000, guid: 362b1a6e8a17c4247b0771713776cb56, type: 3}
+    - {fileID: 21300000, guid: 1a92f9a15dac749ea9a3b9efcb954f22, type: 3}
+    - {fileID: 21300000, guid: a82c4f4b7017d4e3c81f9437b1909c31, type: 3}
+    - {fileID: 21300000, guid: 83334adc7146347c1b98232d75a7b59f, type: 3}
+    - {fileID: 21300000, guid: caa1009832b514101a25114416fab7a0, type: 3}
+    - {fileID: 21300000, guid: 805e808fafb544b26817637d7209d945, type: 3}
     - {fileID: 21300000, guid: 4a4374266f7924272a262cac475c1402, type: 3}
     - {fileID: 21300000, guid: 362b1a6e8a17c4247b0771713776cb56, type: 3}
     - {fileID: 21300000, guid: 1a92f9a15dac749ea9a3b9efcb954f22, type: 3}
