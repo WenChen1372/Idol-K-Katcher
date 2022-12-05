@@ -7,8 +7,8 @@ public class SelectIdolButton : MonoBehaviour
 {
 
     //public int itemID;
-	  public Text idolCount;
-	  public Image idolCard;
+	public Text idolCount;
+	public Image idolCard;
     public Image idolSprite;
     
     public GameObject idol;
@@ -22,7 +22,7 @@ public class SelectIdolButton : MonoBehaviour
 
     public void setIdol(GameObject idolObject)
     {
-      idol = idolObject;
+        idol = idolObject;
     }
 
     public void setAnimation(Animator ani, char tier)
@@ -49,6 +49,14 @@ public class SelectIdolButton : MonoBehaviour
       //save the idol here
 
       // Load the GameObject
+
+
+
+      Debug.Log(idol);  
+      IdolClass chosenIdol = idol.GetComponent<IdolClass>();
+      string name = chosenIdol.getIdolName();  
+
+      Debug.Log("I click " + name);
       return;
 
     }
@@ -59,10 +67,10 @@ public class SelectIdolButton : MonoBehaviour
         idolCount.text = count.ToString();
     }
     // Start is called before the first frame update
-    //void Start()
-    //{
+    void Start()
+    {
         
-    //}
+    }
 
     // Update is called once per frame
     //void Update()

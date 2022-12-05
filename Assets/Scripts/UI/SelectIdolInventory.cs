@@ -46,13 +46,14 @@ public class SelectIdolInventory : MonoBehaviour
 
 
                 SelectIdolButton holderScript = cardHolder.GetComponent<SelectIdolButton>();
-                
 
+
+                holderScript.setIdol(idol);
+                
                 holderScript.setCard(photocard);
 
                 holderScript.setAnimation(idolAnimation, idolClass.IdolTier);
 
-                holderScript.setCount(idolClass.Count);
 
                 
 
