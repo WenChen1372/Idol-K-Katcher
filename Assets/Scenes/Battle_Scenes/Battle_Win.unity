@@ -781,10 +781,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: You have defeated (enemy)!
+  m_text: "You have defeated\n the Idol!"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9d136065b75a1864bb1374a07c17ae91, type: 2}
-  m_sharedMaterial: {fileID: 4125368920386784853, guid: 9d136065b75a1864bb1374a07c17ae91, type: 2}
+  m_sharedMaterial: {fileID: 3996077307849679341, guid: 9d136065b75a1864bb1374a07c17ae91, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -918,7 +918,7 @@ MonoBehaviour:
   m_text: AND (number) Training Points!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9d136065b75a1864bb1374a07c17ae91, type: 2}
-  m_sharedMaterial: {fileID: 4125368920386784853, guid: 9d136065b75a1864bb1374a07c17ae91, type: 2}
+  m_sharedMaterial: {fileID: 3996077307849679341, guid: 9d136065b75a1864bb1374a07c17ae91, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1052,7 +1052,7 @@ MonoBehaviour:
   m_text: 'You Win:'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9d136065b75a1864bb1374a07c17ae91, type: 2}
-  m_sharedMaterial: {fileID: 4125368920386784853, guid: 9d136065b75a1864bb1374a07c17ae91, type: 2}
+  m_sharedMaterial: {fileID: 3996077307849679341, guid: 9d136065b75a1864bb1374a07c17ae91, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
