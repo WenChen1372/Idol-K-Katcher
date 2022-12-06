@@ -30,6 +30,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Battle_Scenes/BattleSimulator.unity
     guid: 11e1c97aabcc14121b4472a62786ceb9
   - enabled: 1
+<<<<<<< HEAD
     path: Assets/Scenes/Collection_Scenes/PlayerSelection.unity
     guid: a600b4d45e7e7b64481668cb920bdcaa
   - enabled: 1
@@ -50,4 +51,14 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Cham_Scenes/Cham_Win.unity
     guid: 5ab4523eee562f447b32cff3b5fba445
+=======
+    path: Assets/Scenes/Battle_Scenes/Battle_Win.unity
+    guid: 7258eddaf21c9544ea7317a63da8a9af
+  - enabled: 1
+    path: Assets/Scenes/Battle_Scenes/Battle_Loss.unity
+    guid: 85f0ef6234415094388c4053f2315304
+  - enabled: 1
+    path: Assets/Scenes/Collection_Scenes/PlayerSelection.unity
+    guid: a600b4d45e7e7b64481668cb920bdcaa
+>>>>>>> main
   m_configObjects: {}

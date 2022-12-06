@@ -14,9 +14,11 @@ public enum GameChoices
 
 }
 
+
+
 public class GameplayController : MonoBehaviour
 {
-    //no need to show in inspector, will set in code
+
     [SerializeField]
     private Sprite up_Sprite, down_Sprite, right_Sprite, left_Sprite;
 
@@ -24,6 +26,7 @@ public class GameplayController : MonoBehaviour
     public Image playerChoice_Img, oponnentChoice_Img;
 
     [SerializeField]
+<<<<<<< HEAD
     private Sprite[] spriteArray;
 
     [SerializeField]
@@ -32,15 +35,9 @@ public class GameplayController : MonoBehaviour
     private Dictionary<string, Sprite[]> arrowDictionary = new Dictionary<string, Sprite[]>(); 
 
     [SerializeField]
+=======
+>>>>>>> main
     private TMP_Text infoText;
-
-    
-
-    //current name of idol
-    private string tempName;
-    //current tier of idol
-    private char tempTier; 
-
 
     
 
@@ -50,52 +47,7 @@ public class GameplayController : MonoBehaviour
 
     private AnimationController animationController;
 
-    #region Helper Methods
-    private void SetArrowDictionary()
-    {
-        int i = 0;
-        int j = 0;
-        while (j < nameArray.Length)
-        {
-            arrowDictionary.Add(nameArray[j], new Sprite[] {spriteArray[i], spriteArray[i+1] , spriteArray[i+2] , spriteArray[i+3] });
-            i += 4;
-            j += 1; 
-        }
-    }
-
-    private void SetDirections()
-    {
-        string key = tempName + tempTier;
-        Debug.Log(key);
-        Sprite[] arrows = arrowDictionary[key];
-        up_Sprite = arrows[0];
-        Debug.Log(up_Sprite);
-        down_Sprite = arrows[1];
-        right_Sprite = arrows[2];
-        left_Sprite = arrows[3]; 
-    }
-    #endregion 
-
-    #region IDataPersistance
-    //in implementing script, just assign variables you want to data.(variable) value
-    public void LoadData(GameData data)
-    {
-        Debug.Log(data.playerCurName);
-        Debug.Log(data.playerCurTier);
-        tempName = data.playerCurName;
-        tempTier = data.playerCurTier;
-        SetArrowDictionary();
-        SetDirections();
-    }
-
-    //in implementing script, just assign data.(variable) to variable value you want 
-    public void SaveData(GameData data)
-    {
-        data.playerCurName = tempName;
-        data.playerCurTier = tempTier; 
-    }
-    #endregion
-
+    
     void Awake()
     {
         animationController = GetComponent<AnimationController>();
@@ -139,6 +91,7 @@ public class GameplayController : MonoBehaviour
         }
        
     }
+    
     public void SetOpponentChoice()
     {
         int rnd = Random.Range(0, 3);
