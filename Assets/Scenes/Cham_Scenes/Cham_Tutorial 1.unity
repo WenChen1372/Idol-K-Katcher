@@ -202,10 +202,68 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &223341311
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5651509029540327093, guid: 8c9e0ba39f951664cbf2d9b587bcf1ca, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5651509029540327093, guid: 8c9e0ba39f951664cbf2d9b587bcf1ca, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 923.97034
+      objectReference: {fileID: 0}
+    - target: {fileID: 5651509029540327093, guid: 8c9e0ba39f951664cbf2d9b587bcf1ca, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 772.9108
+      objectReference: {fileID: 0}
+    - target: {fileID: 5651509029540327093, guid: 8c9e0ba39f951664cbf2d9b587bcf1ca, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 105715.38
+      objectReference: {fileID: 0}
+    - target: {fileID: 5651509029540327093, guid: 8c9e0ba39f951664cbf2d9b587bcf1ca, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5651509029540327093, guid: 8c9e0ba39f951664cbf2d9b587bcf1ca, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5651509029540327093, guid: 8c9e0ba39f951664cbf2d9b587bcf1ca, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5651509029540327093, guid: 8c9e0ba39f951664cbf2d9b587bcf1ca, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5651509029540327093, guid: 8c9e0ba39f951664cbf2d9b587bcf1ca, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5651509029540327093, guid: 8c9e0ba39f951664cbf2d9b587bcf1ca, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5651509029540327093, guid: 8c9e0ba39f951664cbf2d9b587bcf1ca, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5651509029540327095, guid: 8c9e0ba39f951664cbf2d9b587bcf1ca, type: 3}
+      propertyPath: m_Name
+      value: DataManager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8c9e0ba39f951664cbf2d9b587bcf1ca, type: 3}
 --- !u!1 &301921849
 GameObject:
   m_ObjectHideFlags: 0
@@ -234,6 +292,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1176146619}
   m_RootOrder: 0
@@ -309,6 +368,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1176146619}
   m_RootOrder: 2
@@ -340,8 +400,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "To capture the idol into \nyour agency, you will \nplay Cham Cham:"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 9d136065b75a1864bb1374a07c17ae91, type: 2}
-  m_sharedMaterial: {fileID: 3996077307849679341, guid: 9d136065b75a1864bb1374a07c17ae91, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -443,6 +503,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1176146619}
   m_RootOrder: 3
@@ -476,8 +537,8 @@ MonoBehaviour:
     You must choose any direction\nthat is NOT the direction the \nidol is pointing
     in.\n\n3) You must also choose very quickly\nor else you lose automatically"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 9d136065b75a1864bb1374a07c17ae91, type: 2}
-  m_sharedMaterial: {fileID: 3996077307849679341, guid: 9d136065b75a1864bb1374a07c17ae91, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -641,6 +702,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 301921850}
   - {fileID: 1918479366}
@@ -685,6 +747,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_SendPointerHoverToParent: 1
   m_HorizontalAxis: Horizontal
   m_VerticalAxis: Vertical
   m_SubmitButton: Submit
@@ -717,6 +780,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
@@ -750,6 +814,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1176146619}
   m_RootOrder: 4
@@ -869,6 +934,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1176146619}
   m_RootOrder: 1
@@ -900,8 +966,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: You have encountered an Idol!
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 9d136065b75a1864bb1374a07c17ae91, type: 2}
-  m_sharedMaterial: {fileID: 3996077307849679341, guid: 9d136065b75a1864bb1374a07c17ae91, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

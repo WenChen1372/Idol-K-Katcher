@@ -138,25 +138,25 @@ public class AnimationController : MonoBehaviour, IDataPersistance
             {
                 tempTrainingPoints += 4000;
                 tempXP += 400;
-                tempInventoryCount[tempName + tempTier] += 1;
+                
             }
             else if (tempTier == 'A')
             {
                 tempTrainingPoints += 3000;
                 tempXP += 300;
-                tempInventoryCount[tempName + tempTier] += 1;
+                
             }
             else if (tempTier == 'B')
             {
                 tempTrainingPoints += 2000;
                 tempXP += 200;
-                tempInventoryCount[tempName + tempTier] += 1;
+                
             }
             else
             {
                 tempTrainingPoints += 1000;
                 tempXP += 100;
-                tempInventoryCount[tempName + tempTier] += 1;
+                
             }
             print("Stopped win" + trueTimer);
         }

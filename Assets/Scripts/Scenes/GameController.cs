@@ -51,7 +51,7 @@ public class GameController : MonoBehaviour
     public void LoadHome()
     {
         //save game anywhere before we load a scene
-        //DataPersistanceManager.instance.SaveGame();
+        DataPersistanceManager.instance.SaveGame();
         SceneManager.LoadSceneAsync("MainMenu"); 
     }
 

@@ -26,7 +26,7 @@ public class GameplayController : MonoBehaviour
     public Image playerChoice_Img, oponnentChoice_Img;
 
     [SerializeField]
-<<<<<<< HEAD
+
     private Sprite[] spriteArray;
 
     [SerializeField]
@@ -35,8 +35,6 @@ public class GameplayController : MonoBehaviour
     private Dictionary<string, Sprite[]> arrowDictionary = new Dictionary<string, Sprite[]>(); 
 
     [SerializeField]
-=======
->>>>>>> main
     private TMP_Text infoText;
 
     
