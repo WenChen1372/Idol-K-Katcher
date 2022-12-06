@@ -13,6 +13,7 @@ public class SelectIdolInventory : MonoBehaviour
 
     private PlayerInventory playerInventory;
 
+
     
 
     // Start is called before the first frame update

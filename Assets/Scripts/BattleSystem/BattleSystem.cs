@@ -91,7 +91,9 @@ public class BattleSystem : MonoBehaviour, IDataPersistance
     //in implementing script, just assign variables you want to data.(variable) value
     public void LoadData(GameData data)
     {
+        Debug.Log(data.playerSelection);
         enemyIdolPrefab = data.playerCurIdol;
+        playerIdolPrefab = data.playerSelection; 
         tempTrainingPoints = data.playerTrainingPoints;
         tempXP = data.playerXP;
         tempTier = data.playerCurTier;
@@ -109,7 +111,8 @@ public class BattleSystem : MonoBehaviour, IDataPersistance
         data.playerCurTier = tempTier;
         data.playerCurName = tempName;
         data.playerPrefabIdols = tempPrefabIdol;
-        data.playerInventoryCount = tempInventoryCount; 
+        data.playerInventoryCount = tempInventoryCount;
+        data.playerSelection = playerIdolPrefab; 
     }
     #endregion 
     #region begin
@@ -633,26 +636,22 @@ public class BattleSystem : MonoBehaviour, IDataPersistance
             if (tempTier == 'S')
             {
                 tempTrainingPoints += 4000;
-                tempXP += 400;
-                tempInventoryCount[tempName + tempTier] += 1; 
+                tempXP += 400; 
             } 
             else if (tempTier == 'A')
             {
                 tempTrainingPoints += 3000;
                 tempXP += 300;
-                tempInventoryCount[tempName + tempTier] += 1;
             } 
             else if (tempTier == 'B')
             {
                 tempTrainingPoints += 2000;
                 tempXP += 200;
-                tempInventoryCount[tempName + tempTier] += 1;
             } 
             else
             {
                 tempTrainingPoints += 1000;
                 tempXP += 100;
-                tempInventoryCount[tempName + tempTier] += 1;
             }
             
             SceneManager.LoadSceneAsync("Battle_Win");

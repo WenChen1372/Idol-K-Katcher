@@ -2,7 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using System.Linq; 
+using System.Linq;
+using TMPro;
+using UnityEngine.UI; 
 
 public class PlayerController : MonoBehaviour, IDataPersistance
 {
@@ -73,11 +75,22 @@ public class PlayerController : MonoBehaviour, IDataPersistance
     {
         get; 
     }
-    #endregion
 
-    #region 
+    private GameObject selection;
+    public GameObject Selection
+    {
+        get; 
+    }
 
+    public TextMeshProUGUI levelText;
+    public TextMeshProUGUI trainingText;
+    public Slider slider;
     #endregion 
+
+    public void SetLevelBar(int points)
+    {
+        slider.value = points; 
+    }
     #region Trigger Methods
     void OnTriggerStay(Collider other)
     {
@@ -107,6 +120,7 @@ public class PlayerController : MonoBehaviour, IDataPersistance
                     {
                         Debug.Log("reach statment");
                         curIdol = RandomIdol();
+                        selection = RandomIdol(); 
                         Debug.Log(curIdol);
                         curTier = curIdol.GetComponent<IdolClass>().IdolTier;
                         curName = curIdol.GetComponent<IdolClass>().IdolName;
@@ -121,6 +135,12 @@ public class PlayerController : MonoBehaviour, IDataPersistance
     }
     #endregion
 
+    private void Start()
+    {
+        levelText.text = "Level " + level.ToString();
+        trainingText.text = trainingPoints.ToString();
+        SetLevelBar(xp); 
+    }
     #region Setter Methods
     //change player level by a certain amount
     public void ChangeLevel (int amount)
@@ -167,6 +187,7 @@ public class PlayerController : MonoBehaviour, IDataPersistance
         curIdol = data.playerCurIdol;
         curTier = data.playerCurTier;
         curName = data.playerCurName;
+        selection = data.playerSelection;
         //This is to account for the first ever load, if we create a new game dictionaries length = 0
         //in this case we set up the dictionaries with helper methods
         //If dictionaries from game data is not 0, theres stuff, then load it in
@@ -200,7 +221,8 @@ public class PlayerController : MonoBehaviour, IDataPersistance
         data.playerCurTier = curTier;
         data.playerCurName = curName;
         data.playerPrefabIdols = prefabIdols;
-        data.playerInventoryCount = inventoryCount; 
+        data.playerInventoryCount = inventoryCount;
+        data.playerSelection = selection; 
     }
     #endregion
 
