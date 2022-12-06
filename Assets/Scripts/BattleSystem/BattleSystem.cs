@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Random = System.Random;
 using TMPro;
+using UnityEngine.SceneManagement; 
 
 //enum with all of the states of our game
 public enum BattleState { START, PLAYERTURN, ENEMYTURN, WON, LOST }
@@ -386,7 +387,7 @@ public class BattleSystem : MonoBehaviour, IDataPersistance
         else if (enemyUsedSpecial && !enemyUsedAegyo)
         {
             Random number = new Random();
-            attackNum = number.Next(1, 4);
+            attackNum = number.Next(0, 3);
             enemyUsedSpecial = true;
             if (attackNum == 0)
             {
@@ -653,12 +654,16 @@ public class BattleSystem : MonoBehaviour, IDataPersistance
                 tempXP += 100;
                 tempInventoryCount[tempName + tempTier] += 1;
             }
+            
+            SceneManager.LoadSceneAsync("Battle_Win");
             //load winning scene
         }
         else if (currState == BattleState.LOST)
         {
             dialogue.text = "Get GOOD";
             //load scene
+
+            SceneManager.LoadSceneAsync("Battle_Loss");
         }
     }
 
