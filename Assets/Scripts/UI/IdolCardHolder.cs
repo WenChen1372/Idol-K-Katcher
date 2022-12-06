@@ -11,7 +11,9 @@ public class IdolCardHolder : MonoBehaviour
     //public int itemID;
 	public Text idolCount;
 	public Image idolCard;
-    public Image idolAnimation;
+    public Image idolSprite;
+    
+    GameObject idol;
 
 
     
@@ -20,15 +22,32 @@ public class IdolCardHolder : MonoBehaviour
         idolCard.sprite = card;
     }
 
-    public void setAnimation(Sprite idol)
+    public void setAnimation(Sprite idol, Animator ani, char tier)
     {
-        idolAnimation.sprite = idol;
+
+        RuntimeAnimatorController aniControl = ani.runtimeAnimatorController;
+        Animator thisAni = idolSprite.GetComponent<Animator>();
+        thisAni.runtimeAnimatorController = aniControl;
+
+
+        if (tier != 'C') {
+
+            thisAni.SetBool("inInventory", true);
+
+        }
+
+        
+        
+
     }
+
 
     public void setCount(int count)
     {
         idolCount.text = count.ToString();
     }
+
+
 
 
 

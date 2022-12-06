@@ -14,6 +14,8 @@ public enum GameChoices
 
 }
 
+
+
 public class GameplayController : MonoBehaviour
 {
 
@@ -25,6 +27,8 @@ public class GameplayController : MonoBehaviour
 
     [SerializeField]
     private TMP_Text infoText;
+
+    public List<Sprite> spriteArray;
 
     
 

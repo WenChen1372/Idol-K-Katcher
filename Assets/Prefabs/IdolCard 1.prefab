@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1399389760613921889}
   - component: {fileID: 8240493914872560248}
   - component: {fileID: 8617193600148393027}
+  - component: {fileID: 3383802055120597427}
   m_Layer: 5
   m_Name: Sprite
   m_TagString: Untagged
@@ -68,7 +69,7 @@ MonoBehaviour:
       m_Calls: []
   m_Sprite: {fileID: 0}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -76,6 +77,26 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!95 &3383802055120597427
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 390436110345793964}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &2775224673763336085
 GameObject:
   m_ObjectHideFlags: 0
@@ -336,7 +357,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1896527624535001464, guid: c1db1ef5e186bf74691dae88fed6db13, type: 3}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &5882659122533195312
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -381,7 +414,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   idolCount: {fileID: 2220699950309422149}
   idolCard: {fileID: 5472637288231741380}
-  idolAnimation: {fileID: 8617193600148393027}
+  idolSprite: {fileID: 8617193600148393027}
 --- !u!1 &7959146768686701596
 GameObject:
   m_ObjectHideFlags: 0

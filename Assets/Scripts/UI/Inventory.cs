@@ -40,9 +40,8 @@ public class Inventory : MonoBehaviour
 
                 IdolClass idolClass = idol.GetComponent<IdolClass>();
 
-
-
-        
+                Animator idolAnimation = idol.GetComponent<Animator>();
+    
 
                 //get the photo
 
@@ -52,11 +51,11 @@ public class Inventory : MonoBehaviour
 
 
                 IdolCardHolder holderScript = cardHolder.GetComponent<IdolCardHolder>();
-
+                
 
                 holderScript.setCard(photocard);
 
-                holderScript.setAnimation(animation);
+                holderScript.setAnimation(animation, idolAnimation, idolClass.IdolTier);
 
                 holderScript.setCount(idolClass.Count);
 
