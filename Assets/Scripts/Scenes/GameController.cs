@@ -59,5 +59,20 @@ public class GameController : MonoBehaviour
     {
         SceneManager.LoadSceneAsync("Tutorial");
     }
+
+    public void LoadBattleWin()
+    {
+        SceneManager.LoadSceneAsync("Battle_Win");
+    }
+
+    public void LoadBattleLose()
+    {
+        SceneManager.LoadSceneAsync("Battle_Loss");
+    }
+
+    public void LoadSelectScene()
+    {
+        SceneManager.LoadSceneAsync("PlayerSelection");
+    }
     #endregion 
 }

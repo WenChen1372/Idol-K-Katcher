@@ -341,7 +341,7 @@ MonoBehaviour:
   m_text: "To capture the idol into \nyour agency, you will \nplay Cham Cham:"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9d136065b75a1864bb1374a07c17ae91, type: 2}
-  m_sharedMaterial: {fileID: 4125368920386784853, guid: 9d136065b75a1864bb1374a07c17ae91, type: 2}
+  m_sharedMaterial: {fileID: 3996077307849679341, guid: 9d136065b75a1864bb1374a07c17ae91, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -477,7 +477,7 @@ MonoBehaviour:
     in.\n\n3) You must also choose very quickly\nor else you lose automatically"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9d136065b75a1864bb1374a07c17ae91, type: 2}
-  m_sharedMaterial: {fileID: 4125368920386784853, guid: 9d136065b75a1864bb1374a07c17ae91, type: 2}
+  m_sharedMaterial: {fileID: 3996077307849679341, guid: 9d136065b75a1864bb1374a07c17ae91, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -823,7 +823,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: dd42af07bfbbac347b38117c926fccca, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8234f0e20328142b0a6e490fde71fc2c, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -898,10 +898,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: You have encountered (enemy)!
+  m_text: You have encountered an Idol!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9d136065b75a1864bb1374a07c17ae91, type: 2}
-  m_sharedMaterial: {fileID: 4125368920386784853, guid: 9d136065b75a1864bb1374a07c17ae91, type: 2}
+  m_sharedMaterial: {fileID: 3996077307849679341, guid: 9d136065b75a1864bb1374a07c17ae91, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

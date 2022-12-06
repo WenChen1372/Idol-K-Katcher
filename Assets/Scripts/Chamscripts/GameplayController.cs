@@ -14,7 +14,7 @@ public enum GameChoices
 
 }
 
-public class GameplayController : MonoBehaviour, IDataPersistance
+public class GameplayController : MonoBehaviour
 {
     //no need to show in inspector, will set in code
     [SerializeField]
@@ -29,13 +29,7 @@ public class GameplayController : MonoBehaviour, IDataPersistance
     [SerializeField]
     private TMP_Text infoText;
 
-    [SerializeField]
-    private string[] nameArray;
-
-    //dictionaroy to associate saving/loading name and tier
-    //with list of up, down, right, left sprites
-    [SerializeField]
-    private Dictionary<string, Sprite[]> arrowDictionary = new Dictionary<string, Sprite[]>();
+    
 
     //current name of idol
     private string tempName;

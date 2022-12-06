@@ -44,9 +44,8 @@ public class Inventory : MonoBehaviour, IDataPersistance
 
                 IdolClass idolClass = idol.GetComponent<IdolClass>();
 
-
-
-        
+                Animator idolAnimation = idol.GetComponent<Animator>();
+    
 
                 //get the photo
 
@@ -56,11 +55,16 @@ public class Inventory : MonoBehaviour, IDataPersistance
 
 
                 IdolCardHolder holderScript = cardHolder.GetComponent<IdolCardHolder>();
-
+                
 
                 holderScript.setCard(photocard);
 
-                holderScript.setAnimation(animation);
+                holderScript.setAnimation(animation, idolAnimation, idolClass.IdolTier);
+                holderScript.setAnimation(animation, idolAnimation, idolClass.IdolTier);
+
+                
+
+
                 
                 //if dicitonary is empty (new game) set counts to 0
                 //otherwise use Inventory Count Dictionary
