@@ -9,7 +9,7 @@ public class InputController : MonoBehaviour
 
     private string playersChoice;
 
-    void Awake()
+    void Start()
     {
         animationController = GetComponent<AnimationController>();
         gameplayController = GetComponent<GameplayController>();

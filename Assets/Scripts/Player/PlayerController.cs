@@ -96,9 +96,11 @@ public class PlayerController : MonoBehaviour, IDataPersistance
                     {
                         curIdol = other.gameObject;
                         curTier = other.gameObject.GetComponent<IdolClass>().IdolTier;
-                        curName = other.gameObject.GetComponent<IdolClass>().IdolName;
+                        Debug.Log(curTier);
+                        curName = other.gameObject.GetComponent<IdolClass>().getIdolName();
+                        Debug.Log(curName);
                         //save game anywhere before we load a scene
-                        //DataPersistanceManager.instance.SaveGame();
+                        DataPersistanceManager.instance.SaveGame();
                         SceneManager.LoadSceneAsync("Cham");
                     }
                     else
@@ -123,17 +125,21 @@ public class PlayerController : MonoBehaviour, IDataPersistance
     //change player level by a certain amount
     public void ChangeLevel (int amount)
     {
-        level += amount; 
+        level = amount; 
     }
 
     //change player xp by a certain amount
-    public void ChangeXP(int amount)
+    public void ChangeXP(int amount, int levelAmount)
     {
         xp = amount;
         if (xp >= upgradeXp)
         {
-            ChangeLevel(xp / upgradeXp);
+            ChangeLevel(xp / upgradeXp + levelAmount);
             xp = xp % upgradeXp; 
+        }
+        else
+        {
+            level = levelAmount; 
         }
     }
 
@@ -147,8 +153,16 @@ public class PlayerController : MonoBehaviour, IDataPersistance
     #region IDataPersistance Methods
     public void LoadData(GameData data)
     {
-        level = data.playerLevel;
-        xp = data.playerXP;
+        //changes level and xp
+        if(data.playerXP == 0 && data.playerLevel == 0)
+        {
+            level = data.playerLevel;
+            xp = data.playerXP; 
+        }
+        else
+        {
+            ChangeXP(data.playerXP, data.playerLevel);
+        }
         trainingPoints = data.playerTrainingPoints;
         curIdol = data.playerCurIdol;
         curTier = data.playerCurTier;
