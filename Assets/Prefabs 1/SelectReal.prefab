@@ -357,9 +357,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6365139298674937500}
-        m_TargetAssemblyTypeName: SelectIdolButton, Assembly-CSharp
-        m_MethodName: OnClick
+      - m_Target: {fileID: 2495791171196654882, guid: 14aa8a195e84df24f9925d5646a55290, type: 3}
+        m_TargetAssemblyTypeName: GameController, Assembly-CSharp
+        m_MethodName: LoadBattle
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

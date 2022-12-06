@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement; 
 
-public class SelectIdolButton : MonoBehaviour
+public class SelectIdolButton : MonoBehaviour, IDataPersistance
 {
 
     //public int itemID;
@@ -44,23 +45,28 @@ public class SelectIdolButton : MonoBehaviour
 
     }
 
-    public void OnClick()
+
+    #region IData
+    //in implementing script, just assign variables you want to data.(variable) value
+    public void LoadData(GameData data)
     {
-      //save the idol here
-
-      // Load the GameObject
-
-
-
-      Debug.Log(idol);  
-      IdolClass chosenIdol = idol.GetComponent<IdolClass>();
-      string name = chosenIdol.getIdolName();  
-
-      Debug.Log("I click " + name);
-      return;
-
+        return; 
     }
 
+    //in implementing script, just assign data.(variable) to variable value you want 
+    public void SaveData(GameData data)
+    {
+        Debug.Log(data.playerSelection);
+        data.playerSelection = idol;
+        Debug.Log(data.playerSelection);
+    }
+
+    public void OnClick()
+    {
+        DataPersistanceManager.instance.SaveGame();
+        SceneManager.LoadSceneAsync("BattleSimulator"); 
+    }
+    #endregion
 
     public void setCount(int count)
     {

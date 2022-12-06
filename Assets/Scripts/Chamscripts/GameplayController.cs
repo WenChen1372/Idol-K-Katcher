@@ -27,6 +27,11 @@ public class GameplayController : MonoBehaviour
     private Sprite[] spriteArray;
 
     [SerializeField]
+    private string[] nameArray;
+
+    private Dictionary<string, Sprite[]> arrowDictionary = new Dictionary<string, Sprite[]>(); 
+
+    [SerializeField]
     private TMP_Text infoText;
 
     

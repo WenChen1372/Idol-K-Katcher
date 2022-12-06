@@ -90,7 +90,9 @@ public class BattleSystem : MonoBehaviour, IDataPersistance
     //in implementing script, just assign variables you want to data.(variable) value
     public void LoadData(GameData data)
     {
+        Debug.Log(data.playerSelection);
         enemyIdolPrefab = data.playerCurIdol;
+        playerIdolPrefab = data.playerSelection; 
         tempTrainingPoints = data.playerTrainingPoints;
         tempXP = data.playerXP;
         tempTier = data.playerCurTier;
@@ -108,7 +110,8 @@ public class BattleSystem : MonoBehaviour, IDataPersistance
         data.playerCurTier = tempTier;
         data.playerCurName = tempName;
         data.playerPrefabIdols = tempPrefabIdol;
-        data.playerInventoryCount = tempInventoryCount; 
+        data.playerInventoryCount = tempInventoryCount;
+        data.playerSelection = playerIdolPrefab; 
     }
     #endregion 
     #region begin
